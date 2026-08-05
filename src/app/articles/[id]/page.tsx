@@ -410,10 +410,9 @@ export default function ArticleReadPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-bread-background">
+      <div className="min-h-screen flex items-center justify-center bg-[var(--bread-background)]">
         <div className="text-center">
-          <div className="text-6xl mb-4 bread-loading">🍞</div>
-          <p className="text-bread-primary font-display text-xl">烘焙中...</p>
+          <p className="text-[var(--bread-text-secondary)] font-body text-sm tracking-widest">加载中</p>
         </div>
       </div>
     );
@@ -421,12 +420,12 @@ export default function ArticleReadPage() {
 
   if (!article) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-bread-background">
+      <div className="min-h-screen flex items-center justify-center bg-[var(--bread-background)]">
         <div className="bread-card p-12 text-center">
-          <div className="text-6xl mb-4">📰</div>
-          <h2 className="font-display text-2xl font-bold text-gray-900 mb-2">文章不存在</h2>
-          <p className="text-gray-600">请检查链接是否正确</p>
-          <a href="/articles" className="bread-button-primary mt-6 inline-block">
+          
+          <h2 className="font-display text-2xl font-bold text-[var(--bread-text)] mb-2">文章不存在</h2>
+          <p className="text-[var(--bread-text-secondary)]">请检查链接是否正确</p>
+          <a href="/articles" className="bread-button-primary text-xs mt-6 inline-block">
             返回文章列表
           </a>
         </div>
@@ -439,13 +438,13 @@ export default function ArticleReadPage() {
   const majorCategory = profile?.major_category || '综合';
 
   return (
-    <div className="min-h-screen bg-bread-background">
+    <div className="min-h-screen bg-[var(--bread-background)]">
       {/* 报纸风格头部 */}
       <header className="bread-navbar">
         <div className="max-w-6xl mx-auto px-4 py-4">
           {/* 顶部日期和期号 */}
-          <div className="flex items-center justify-between mb-4 pb-4 border-b-2 border-gray-900">
-            <div className="text-sm text-gray-600 font-body">
+          <div className="flex items-center justify-between mb-4 pb-4 border-b border-[var(--bread-border)]">
+            <div className="text-sm text-[var(--bread-text-secondary)] font-body">
               {new Date().toLocaleDateString('zh-CN', { 
                 year: 'numeric', 
                 month: 'long', 
@@ -453,19 +452,19 @@ export default function ArticleReadPage() {
                 weekday: 'long'
               })}
             </div>
-            <div className="text-sm text-gray-600 font-body">
-              每日精选 · AI 改写
+            <div className="text-sm text-[var(--bread-text-secondary)] font-body">
+              每日精选英文新闻
             </div>
           </div>
           
           {/* 标题栏 */}
           <div className="text-center mb-4">
-            <h1 className="font-display text-4xl md:text-5xl font-bold text-gray-900 mb-2 tracking-tight">
+            <h1 className="font-display text-4xl md:text-5xl font-bold text-[var(--bread-text)] mb-2 tracking-tight">
               文章阅读
             </h1>
-            <div className="newspaper-divider">
-              <p className="text-lg text-bread-primary font-display italic">
-                沉浸式英语学习体验
+            <div className="">
+              <p className="text-sm text-[var(--bread-text-secondary)] font-display italic">
+                沉浸式英语学习
               </p>
             </div>
           </div>
@@ -473,13 +472,13 @@ export default function ArticleReadPage() {
           {/* 导航栏 */}
           <div className="flex items-center justify-between">
             <nav className="flex items-center gap-6">
-              <a href="/" className="text-gray-600 font-display text-lg hover:text-bread-primary transition">
+              <a href="/" className="text-[var(--bread-text-secondary)] font-body text-sm tracking-wider hover:text-bread-primary transition">
                 首页
               </a>
-              <a href="/articles" className="text-gray-900 font-display font-semibold text-lg hover:text-bread-primary transition">
+              <a href="/articles" className="text-[var(--bread-text)] font-display font-semibold text-lg hover:text-bread-primary transition">
                 文章
               </a>
-              <a href="/vocab" className="text-gray-600 font-display text-lg hover:text-bread-primary transition">
+              <a href="/vocab" className="text-[var(--bread-text-secondary)] font-body text-sm tracking-wider hover:text-bread-primary transition">
                 单词本
               </a>
             </nav>
@@ -488,10 +487,10 @@ export default function ArticleReadPage() {
               {isGuest ? (
                 <>
                   <span className="bread-tag bread-tag-secondary">
-                    👤 游客
+                    游客
                   </span>
-                  <a href="/login" className="bread-button-primary text-sm">
-                    登录 / 注册
+                  <a href="/login" className="bread-button-primary text-xs text-sm">
+                    登录
                   </a>
                 </>
               ) : (
@@ -502,8 +501,8 @@ export default function ArticleReadPage() {
                   <span className="bread-tag bread-tag-secondary">
                     {majorCategory}
                   </span>
-                  <a href="/settings" className="text-gray-600 hover:text-bread-primary transition" title="设置">
-                    ⚙️
+                  <a href="/settings" className="text-[var(--bread-text-secondary)] hover:text-bread-primary transition" title="设置">
+                    设置
                   </a>
                 </>
               )}
@@ -516,24 +515,24 @@ export default function ArticleReadPage() {
       <main className="max-w-6xl mx-auto px-4 py-8">
         {/* 文章信息卡片 */}
         <section className="bread-card mb-8">
-          <div className="p-6 border-b border-gray-200">
+          <div className="p-6 border-b border-[var(--bread-border)]">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-3">
-                <a href="/articles" className="text-2xl hover:opacity-80 transition">←</a>
-                <span className="text-sm text-gray-600">返回文章列表</span>
+                <a href="/articles" className="text-sm text-[var(--bread-text-secondary)] hover:text-[var(--bread-text)] transition">返回</a>
+                <span className="text-sm text-[var(--bread-text-secondary)]">返回文章列表</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-sm text-gray-600">切换难度:</span>
-                <div className="flex bg-gray-100 rounded-lg p-1">
+                <span className="text-sm text-[var(--bread-text-secondary)]">切换难度:</span>
+                <div className="flex bg-[var(--bread-highlight)] rounded p-1">
                   <button
                     onClick={() => {
                       setDisplayMode('CET4');
                       setUserTargetExam('CET4');
                     }}
-                    className={`px-4 py-1.5 rounded-md text-sm font-medium transition ${
+                    className={`px-4 py-1.5 rounded-md text-xs font-medium transition ${
                       displayMode === 'CET4'
-                        ? 'bg-bread-primary text-white shadow'
-                        : 'text-gray-600 hover:text-gray-900'
+                        ? 'bg-[var(--bread-text)] text-white'
+                        : 'text-[var(--bread-text-secondary)] hover:text-[var(--bread-text)]'
                     }`}
                   >
                     CET-4
@@ -543,10 +542,10 @@ export default function ArticleReadPage() {
                       setDisplayMode('CET6');
                       setUserTargetExam('CET6');
                     }}
-                    className={`px-4 py-1.5 rounded-md text-sm font-medium transition ${
+                    className={`px-4 py-1.5 rounded-md text-xs font-medium transition ${
                       displayMode === 'CET6'
-                        ? 'bg-bread-primary text-white shadow'
-                        : 'text-gray-600 hover:text-gray-900'
+                        ? 'bg-[var(--bread-text)] text-white'
+                        : 'text-[var(--bread-text-secondary)] hover:text-[var(--bread-text)]'
                     }`}
                   >
                     CET-6
@@ -556,12 +555,12 @@ export default function ArticleReadPage() {
             </div>
             
             <div className="space-y-3">
-              <h2 className="font-display text-2xl md:text-3xl font-bold text-gray-900">
+              <h2 className="font-display text-2xl md:text-3xl font-bold text-[var(--bread-text)]">
                 {article.title_en}
               </h2>
               
               {article.source_name && (
-                <p className="text-gray-600 flex items-center gap-2">
+                <p className="text-[var(--bread-text-secondary)] flex items-center gap-2">
                   <span>📰</span>
                   <span>来源: {article.source_name}</span>
                 </p>
@@ -597,7 +596,7 @@ export default function ArticleReadPage() {
           </div>
 
           {/* 文章内容 */}
-          <div className="p-6 md:p-8">
+          <div className="p-6">
             {enrichedTokens.length > 0 ? (
               <ArticleReader
                 tokens={enrichedTokens}
@@ -621,16 +620,16 @@ export default function ArticleReadPage() {
 
           {/* 中文译文 */}
           {translation && (
-            <div className="p-6 border-t border-gray-200 bg-gray-50">
+            <div className="p-6 border-t border-gray-200 bg-[var(--bread-highlight)]">
               <button
                 onClick={() => setShowTranslation(!showTranslation)}
                 className="flex items-center gap-2 text-bread-primary hover:text-bread-accent font-medium mb-4"
               >
                 <span>{showTranslation ? '▼' : '▶'}</span>
-                <span>📖 显示中文译文</span>
+                <span>📖 查看中文译文</span>
               </button>
               {showTranslation && (
-                <div className="p-4 bg-white rounded-xl border border-gray-200">
+                <div className="p-4 bg-white rounded-xl border border-[var(--bread-border)]">
                   <p className="text-gray-800 leading-relaxed whitespace-pre-wrap mb-3">
                     {translation}
                   </p>
@@ -649,8 +648,8 @@ export default function ArticleReadPage() {
                 onClick={handleMarkAsRead}
                 className={`w-full py-3 rounded-xl font-medium transition mb-6 ${
                   isRead
-                    ? 'bg-gray-200 text-gray-500 cursor-pointer hover:bg-gray-300'
-                    : 'bread-button-primary'
+                    ? 'bg-[var(--bread-highlight)] text-[var(--bread-text-secondary)] cursor-pointer hover:bg-[var(--bread-border)]'
+                    : 'bread-button-primary text-xs'
                 }`}
               >
                 {isRead ? '✅ 已完成阅读（再次点击取消）' : '📖 标记为已完成阅读'}
@@ -663,9 +662,9 @@ export default function ArticleReadPage() {
                 {currentArticleIndex > 0 ? (
                   <a
                     href={`/articles/${articleList[currentArticleIndex - 1].id}`}
-                    className="flex-1 py-3 px-4 bread-button-secondary text-center"
+                    className="flex-1 py-3 px-4 bread-button-secondary text-center text-xs"
                   >
-                    ← 上一篇
+                    返回 上一篇
                   </a>
                 ) : (
                   <div className="flex-1 py-3 px-4 bg-gray-200 text-gray-500 text-center rounded-xl font-medium cursor-default">
@@ -680,7 +679,7 @@ export default function ArticleReadPage() {
                 {currentArticleIndex < articleList.length - 1 ? (
                   <a
                     href={`/articles/${articleList[currentArticleIndex + 1].id}`}
-                    className="flex-1 py-3 px-4 bread-button-secondary text-center"
+                    className="flex-1 py-3 px-4 bread-button-secondary text-center text-xs"
                   >
                     下一篇 →
                   </a>
@@ -696,8 +695,8 @@ export default function ArticleReadPage() {
 
         {/* 阅读说明 */}
         <section className="bread-card p-6">
-          <h4 className="font-display font-bold text-gray-900 mb-4">📖 阅读说明</h4>
-          <ul className="space-y-2 text-sm text-gray-600">
+          <h4 className="font-display font-bold text-[var(--bread-text)] mb-4">阅读说明</h4>
+          <ul className="space-y-2 text-sm text-[var(--bread-text-secondary)]">
             <li className="flex items-center gap-2">
               <span className="w-4 h-4 bg-gray-200 rounded"></span>
               <span><strong>普通文本</strong>：Level 0，基础词汇</span>
@@ -715,11 +714,11 @@ export default function ArticleReadPage() {
       </main>
 
       {/* 报纸风格底部 */}
-      <footer className="border-t-2 border-gray-900 bg-white mt-12">
+      <footer className="border-t border-[var(--bread-text)] bg-white mt-12">
         <div className="max-w-6xl mx-auto px-4 py-8">
-          <div className="newspaper-divider">
-            <p className="text-center text-gray-600 text-sm font-body">
-              © 2026 单词面包 WordBread · 让英语学习更简单
+          <div className="">
+            <p className="text-center text-[var(--bread-text-secondary)] text-sm font-body">
+              © 2026 单词面包 WordBread. 保留所有权利。
             </p>
           </div>
         </div>
