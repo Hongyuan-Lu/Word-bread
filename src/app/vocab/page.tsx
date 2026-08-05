@@ -288,7 +288,7 @@ export default function VocabPage() {
                       <div className="flex-1">
                         <div className="flex items-center gap-3 mb-2">
                           <span className="text-xl font-bold text-[var(--bread-text)]">{word.lemma}</span>
-                          <span className={`bread-tag text-[0.65rem] ${word.vocab_type === 'study_plan' ? 'bread-tag-primary' : 'bread-tag-secondary'}`}>
+                          <span className={`bread-tag text-[0.65rem] ${word.vocab_type === 'study_plan' ? 'bread-tag-primary' : 'bread-tag-primary'}`}>
                             {word.vocab_type === 'study_plan' ? '学习计划' : '较难单词'}
                           </span>
                           {examLevel && (
@@ -343,7 +343,7 @@ export default function VocabPage() {
         </section>
       </main>
 
-      <footer className="border-t border-[var(--bread-border)] bg-white mt-16">
+      <footer className="border-t border-[var(--bread-text)] bg-white">
         <div className="max-w-5xl mx-auto px-6 py-8">
           <p className="text-center text-[var(--bread-text-secondary)] text-xs">
             2026 单词面包 WordBread. 保留所有权利。
