@@ -279,7 +279,7 @@ export default function ArticlesPage() {
                         
                         <div className="flex flex-wrap items-center gap-4 text-xs text-[var(--bread-text-secondary)]">
                           {article.source_name && (
-                            <span className="border-l border-[var(--bread-border)] pl-3">{article.source_name}</span>
+                            <span className="">{article.source_name}</span>
                           )}
                           {article.source_published_at && (
                             <span>{formatDate(article.source_published_at)}</span>
@@ -299,7 +299,7 @@ export default function ArticlesPage() {
       </main>
 
       {/* 底部 */}
-      <footer className="border-t border-[var(--bread-border)] bg-white mt-16">
+      <footer className="border-t border-[var(--bread-text)] bg-white mt-12">
         <div className="max-w-5xl mx-auto px-6 py-8">
           <p className="text-center text-[var(--bread-text-secondary)] text-xs">
             2026 单词面包 WordBread. 保留所有权利。
