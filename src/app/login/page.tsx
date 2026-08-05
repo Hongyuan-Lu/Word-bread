@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
@@ -94,19 +94,25 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-orange-50 to-amber-50 px-4 py-8">
+    <div className="min-h-screen bg-bread-background flex items-center justify-center px-4 py-8">
       <div className="w-full max-w-md">
-        {/* Logo */}
+        {/* 报纸风格头部 */}
         <div className="text-center mb-8">
-          <a href="/" className="inline-block text-6xl hover:scale-110 transition-transform">
-            🍞
-          </a>
-          <h1 className="text-3xl font-bold text-gray-900 mt-4">单词面包</h1>
-          <p className="text-gray-600 mt-2">
-            {isSignUp ? '创建您的学习账户' : '欢迎回来，开始学习'}
+          <div className="newspaper-divider mb-6">
+            <a href="/" className="inline-block">
+              <h1 className="font-display text-5xl font-bold text-gray-900 mb-2">单词面包</h1>
+              <p className="text-bread-primary font-display italic">WordBread · 将新闻烘焙成知识</p>
+            </a>
+          </div>
+          
+          <h2 className="font-display text-3xl font-bold text-gray-900 mb-2">
+            {isSignUp ? '创建账户' : '欢迎回来'}
+          </h2>
+          <p className="text-gray-600 font-body">
+            {isSignUp ? '开始您的英语学习之旅' : '继续您的学习之旅'}
           </p>
           {!isSignUp && (
-            <p className="text-sm text-gray-500 mt-1">
+            <p className="text-sm text-gray-500 mt-2">
               支持邮箱或昵称登录
             </p>
           )}
@@ -125,7 +131,7 @@ export default function LoginPage() {
           >
             <div className="flex items-center gap-2">
               <span className="text-lg">
-                {message.type === 'success' ? '✅' : message.type === 'error' ? '❌' : 'ℹ️'}
+                {message.type === 'success' ? '✅' : message.type === 'error' ? '❌' : '⚠️'}
               </span>
               <span>{message.text}</span>
             </div>
@@ -133,36 +139,33 @@ export default function LoginPage() {
         )}
 
         {/* 游客登录选项 */}
-        <div className="bg-white rounded-2xl shadow-xl p-6 mb-4">
+        <div className="bread-card p-6 mb-6">
           <a
             href="/"
-            className="block w-full py-3 px-4 bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium rounded-lg transition text-center"
+            className="bread-button-secondary w-full text-center block"
           >
             以游客身份继续浏览
           </a>
-          <p className="text-xs text-gray-500 text-center mt-2">
-            游客可以浏览和阅读文章，但不会保存学习进度
+          <p className="text-xs text-gray-500 text-center mt-3">
+            游客模式可浏览文章，但学习进度不会保存
           </p>
         </div>
 
-        <div className="relative mb-4">
-          <div className="absolute inset-0 flex items-center">
-            <div className="w-full border-t border-gray-300"></div>
-          </div>
-          <div className="relative flex justify-center text-sm">
-            <span className="px-4 bg-gradient-to-br from-orange-50 to-amber-50 text-gray-600">
-              或登录账户
-            </span>
-          </div>
+        {/* 分隔线 */}
+        <div className="flex items-center gap-4 mb-6">
+          <div className="flex-1 border-t border-gray-300"></div>
+          <span className="text-sm text-gray-500 font-body">或</span>
+          <div className="flex-1 border-t border-gray-300"></div>
         </div>
 
         {/* 登录表单 */}
-        <div className="bg-white rounded-2xl shadow-xl p-8">
-          <form onSubmit={handleSubmit} className="space-y-5">
+        <div className="bread-card p-6">
+          <form onSubmit={handleSubmit} className="space-y-4">
+            {/* 昵称输入（仅注册时） */}
             {isSignUp && (
               <div>
                 <label htmlFor="nickname" className="block text-sm font-medium text-gray-700 mb-2">
-                  👤 昵称（登录凭证）
+                  👤 昵称
                 </label>
                 <input
                   id="nickname"
@@ -171,18 +174,18 @@ export default function LoginPage() {
                   onChange={(e) => setNickname(e.target.value)}
                   required
                   disabled={loading}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition disabled:bg-gray-100"
-                  placeholder="请输入唯一昵称"
+                  className="bread-input"
+                  placeholder="您的学习昵称"
                 />
                 <p className="text-xs text-gray-500 mt-1">
-                  昵称将作为登录凭证之一，请选择有意义的名称
+                  昵称将作为您的身份标识之一，请选择有意义的名称
                 </p>
               </div>
             )}
 
             <div>
               <label htmlFor="account" className="block text-sm font-medium text-gray-700 mb-2">
-                📧 邮箱地址{!isSignUp && ' 或 昵称'}
+                📧 邮箱地址{!isSignUp && ' 或昵称'}
               </label>
               <input
                 id="account"
@@ -191,7 +194,7 @@ export default function LoginPage() {
                 onChange={(e) => setAccount(e.target.value)}
                 required
                 disabled={loading}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition disabled:bg-gray-100 placeholder:text-gray-400"
+                className="bread-input"
                 placeholder={isSignUp ? "your@email.com" : "your@email.com 或 nickname"}
               />
               {!isSignUp && (
@@ -203,7 +206,7 @@ export default function LoginPage() {
 
             <div>
               <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
-                🔐 密码
+                🔒 密码
               </label>
               <div className="relative">
                 <input
@@ -214,7 +217,7 @@ export default function LoginPage() {
                   required
                   minLength={6}
                   disabled={loading}
-                  className="w-full px-4 py-3 pr-12 rounded-lg border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition disabled:bg-gray-100 placeholder:text-gray-400"
+                  className="bread-input pr-12"
                   placeholder="请输入密码"
                 />
                 <button
@@ -236,7 +239,7 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3 px-4 bg-orange-500 hover:bg-orange-600 text-white font-medium rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              className="bread-button-primary w-full flex items-center justify-center gap-2"
             >
               {loading ? (
                 <>
@@ -244,7 +247,7 @@ export default function LoginPage() {
                   <span>处理中...</span>
                 </>
               ) : (
-                <span>{isSignUp ? '📝 注册' : '🔓 登录'}</span>
+                <span>{isSignUp ? '📝 注册' : '🚀 登录'}</span>
               )}
             </button>
           </form>
@@ -258,7 +261,7 @@ export default function LoginPage() {
                 setMessage(null);
               }}
               disabled={loading}
-              className="text-orange-600 hover:text-orange-700 text-sm font-medium disabled:opacity-50"
+              className="text-bread-primary hover:text-bread-accent text-sm font-medium disabled:opacity-50 transition"
             >
               {isSignUp ? (
                 <>
@@ -277,13 +280,11 @@ export default function LoginPage() {
         <div className="mt-6 text-center text-sm text-gray-600">
           <p>
             登录即表示您同意我们的
-            <a href="#" className="text-orange-600 hover:underline ml-1">服务条款</a>
+            <a href="#" className="text-bread-primary hover:underline ml-1">服务条款</a>
             和
-            <a href="#" className="text-orange-600 hover:underline ml-1">隐私政策</a>
+            <a href="#" className="text-bread-primary hover:underline ml-1">隐私政策</a>
           </p>
         </div>
-
-        
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import type { ArticleToken } from '@/types/article';
 import type { DisplayLevel } from '@/types/vocab';
@@ -22,19 +22,20 @@ export function WordToken({
   };
 
   if (token.token_type !== 'word') {
-    return <span className="text-gray-400">{token.surface}</span>;
+    return <span className="text-gray-900">{token.surface}</span>;
   }
 
-  const baseClass = 'cursor-pointer rounded px-0.5 transition';
+  const baseClass = 'cursor-pointer rounded px-0.5 transition-all duration-200';
 
+  // Level 0: 普通文本（常见词）
   if (displayLevel === 0) {
     return (
       <span
         onClick={handleClick}
         className={`${baseClass} ${
           isSelected
-            ? 'bg-blue-100 ring-2 ring-blue-400'
-            : 'hover:bg-gray-100'
+            ? 'bg-bread-primary/20 ring-2 ring-bread-primary'
+            : 'hover:bg-bread-primary/10'
         }`}
       >
         {token.surface}
@@ -42,14 +43,15 @@ export function WordToken({
     );
   }
 
+  // Level 1: 高亮加粗（当前目标重点词）
   if (displayLevel === 1) {
     return (
       <span
         onClick={handleClick}
-        className={`${baseClass} font-bold text-orange-600 ${
+        className={`${baseClass} font-bold word-highlight ${
           isSelected
-            ? 'bg-blue-100 ring-2 ring-blue-400'
-            : 'hover:bg-orange-50'
+            ? 'ring-2 ring-bread-primary'
+            : 'hover:opacity-80'
         }`}
       >
         {token.surface}
@@ -57,13 +59,14 @@ export function WordToken({
     );
   }
 
+  // Level 2: 灰色文字（超出目标或超纲词）
   if (displayLevel === 2) {
     return (
       <span
         onClick={handleClick}
         className={`${baseClass} text-gray-500 ${
           isSelected
-            ? 'bg-blue-100 ring-2 ring-blue-400'
+            ? 'bg-bread-primary/20 ring-2 ring-bread-primary'
             : 'hover:bg-gray-100'
         }`}
       >
@@ -72,13 +75,14 @@ export function WordToken({
     );
   }
 
+  // 默认样式
   return (
     <span
       onClick={handleClick}
       className={`${baseClass} ${
         isSelected
-          ? 'bg-blue-100 ring-2 ring-blue-400'
-          : 'hover:bg-gray-100'
+          ? 'bg-bread-primary/20 ring-2 ring-bread-primary'
+          : 'hover:bg-bread-primary/10'
       }`}
     >
       {token.surface}
@@ -86,10 +90,10 @@ export function WordToken({
   );
 }
 
-export function NonWordToken({ surface }: { surface: string }) {
-  if (surface === ' ') {
+export function NonWordToken({ token }: { token: ArticleToken }) {
+  if (token.surface === ' ') {
     return <span> </span>;
   }
 
-  return <span className="text-gray-900">{surface}</span>;
+  return <span className="text-gray-900">{token.surface}</span>;
 }

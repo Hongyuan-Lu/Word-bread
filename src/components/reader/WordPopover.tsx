@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useEffect, useRef } from 'react';
 import type { ArticleToken } from '@/types/article';
@@ -36,7 +36,7 @@ export function WordPopover({
   }, [onClose]);
 
   const masteryLabels: Record<string, string> = {
-    known: '已熟知',
+    known: '已熟悉',
     learning: '学习中',
     unknown: '不熟悉',
     null: '未标记',
@@ -69,7 +69,7 @@ export function WordPopover({
   return (
     <div
       ref={popoverRef}
-      className="fixed z-50 bg-white rounded-xl shadow-2xl border border-gray-200 w-72 p-4 animate-in fade-in zoom-in-95 duration-150"
+      className="bread-popover fixed z-50 w-72 animate-in fade-in zoom-in-95 duration-150"
       style={{
         top: finalPosition.top,
         left: finalPosition.left,
@@ -77,16 +77,16 @@ export function WordPopover({
     >
       <button
         onClick={onClose}
-        className="absolute top-2 right-2 w-6 h-6 flex items-center justify-center text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-full transition"
+        className="absolute top-3 right-3 w-8 h-8 flex items-center justify-center text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-full transition"
       >
         ✕
       </button>
 
-      <div className="mb-3">
-        <div className="text-2xl font-bold text-gray-900 mb-1">{token.surface}</div>
+      <div className="mb-4">
+        <div className="font-display text-2xl font-bold text-gray-900 mb-1">{token.surface}</div>
         {token.lemma && (
-          <div className="text-sm text-gray-500">
-            lemma: <span className="font-mono">{token.lemma}</span>
+          <div className="text-sm text-gray-500 font-mono">
+            lemma: {token.lemma}
           </div>
         )}
       </div>
@@ -94,10 +94,10 @@ export function WordPopover({
       <div className="space-y-2 mb-4">
         {displayLevel !== null && (
           <div className="flex items-center gap-2">
-            <span className="text-xs text-gray-500">显示</span>
-            <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${
-              displayLevel === 0 ? 'bg-gray-100 text-gray-600' :
-              displayLevel === 1 ? 'bg-orange-100 text-orange-700' :
+            <span className="text-sm text-gray-600">显示:</span>
+            <span className={`bread-tag text-xs ${
+              displayLevel === 0 ? 'bread-tag-secondary' :
+              displayLevel === 1 ? 'bread-tag-primary' :
               'bg-blue-100 text-blue-700'
             }`}>
               Level {displayLevel}
@@ -109,11 +109,11 @@ export function WordPopover({
         )}
 
         <div className="flex items-center gap-2">
-          <span className="text-xs text-gray-500">掌握</span>
-          <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${
+          <span className="text-sm text-gray-600">掌握:</span>
+          <span className={`bread-tag text-xs ${
             masteryStatus === 'known' ? 'bg-green-100 text-green-700' :
             masteryStatus === 'unknown' ? 'bg-yellow-100 text-yellow-700' :
-            'bg-gray-100 text-gray-600'
+            'bread-tag-secondary'
           }`}>
             {masteryLabels[masteryStatus ?? 'null']}
           </span>
@@ -121,34 +121,34 @@ export function WordPopover({
       </div>
 
       {token.short_explanation && (
-        <div className="mb-3 p-3 bg-blue-50 rounded-lg border border-blue-100">
-          <div className="text-xs text-blue-600 font-medium mb-1">释义</div>
-          <div className="text-gray-900">{token.short_explanation}</div>
+        <div className="mb-4 p-3 bg-blue-50 rounded-xl border border-blue-100">
+          <div className="text-xs text-blue-600 font-medium mb-1">📖 释义</div>
+          <div className="text-sm text-gray-800">{token.short_explanation}</div>
         </div>
       )}
 
-      <div className="flex gap-2 pt-2 border-t">
+      <div className="flex gap-2 pt-3 border-t border-gray-200">
         <button
           onClick={() => onMarkKnown(token.lemma!)}
           disabled={!token.lemma || masteryStatus === 'known'}
-          className={`flex-1 px-3 py-2 rounded-lg text-sm font-medium transition ${
+          className={`flex-1 px-3 py-2 rounded-xl text-sm font-medium transition ${
             masteryStatus === 'known'
               ? 'bg-green-100 text-green-700 cursor-default'
               : 'bg-green-500 hover:bg-green-600 text-white'
           }`}
         >
-          ✓ 已熟知
+          ✅ 已熟悉
         </button>
         <button
           onClick={() => onMarkUnknown(token.lemma!)}
           disabled={!token.lemma || masteryStatus === 'unknown'}
-          className={`flex-1 px-3 py-2 rounded-lg text-sm font-medium transition ${
+          className={`flex-1 px-3 py-2 rounded-xl text-sm font-medium transition ${
             masteryStatus === 'unknown'
               ? 'bg-yellow-100 text-yellow-700 cursor-default'
               : 'bg-yellow-500 hover:bg-yellow-600 text-white'
           }`}
         >
-          ✗ 不熟悉
+          ❌ 不熟悉
         </button>
       </div>
     </div>

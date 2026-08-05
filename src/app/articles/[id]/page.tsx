@@ -410,16 +410,26 @@ export default function ArticleReadPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <Loading />
+      <div className="min-h-screen flex items-center justify-center bg-bread-background">
+        <div className="text-center">
+          <div className="text-6xl mb-4 bread-loading">🍞</div>
+          <p className="text-bread-primary font-display text-xl">烘焙中...</p>
+        </div>
       </div>
     );
   }
 
   if (!article) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-gray-500">文章不存在</div>
+      <div className="min-h-screen flex items-center justify-center bg-bread-background">
+        <div className="bread-card p-12 text-center">
+          <div className="text-6xl mb-4">📰</div>
+          <h2 className="font-display text-2xl font-bold text-gray-900 mb-2">文章不存在</h2>
+          <p className="text-gray-600">请检查链接是否正确</p>
+          <a href="/articles" className="bread-button-primary mt-6 inline-block">
+            返回文章列表
+          </a>
+        </div>
       </div>
     );
   }
@@ -429,46 +439,70 @@ export default function ArticleReadPage() {
   const majorCategory = profile?.major_category || '综合';
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <header className="bg-white shadow-sm top-0 z-10">
-        <div className="max-w-4xl mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <a href="/" className="text-2xl hover:opacity-80 transition">🍞</a>
-              <span className="text-lg font-bold text-gray-900">文章阅读</span>
+    <div className="min-h-screen bg-bread-background">
+      {/* 报纸风格头部 */}
+      <header className="bread-navbar">
+        <div className="max-w-6xl mx-auto px-4 py-4">
+          {/* 顶部日期和期号 */}
+          <div className="flex items-center justify-between mb-4 pb-4 border-b-2 border-gray-900">
+            <div className="text-sm text-gray-600 font-body">
+              {new Date().toLocaleDateString('zh-CN', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                weekday: 'long'
+              })}
             </div>
-            <div className="flex items-center gap-3">
+            <div className="text-sm text-gray-600 font-body">
+              每日精选 · AI 改写
+            </div>
+          </div>
+          
+          {/* 标题栏 */}
+          <div className="text-center mb-4">
+            <h1 className="font-display text-4xl md:text-5xl font-bold text-gray-900 mb-2 tracking-tight">
+              文章阅读
+            </h1>
+            <div className="newspaper-divider">
+              <p className="text-lg text-bread-primary font-display italic">
+                沉浸式英语学习体验
+              </p>
+            </div>
+          </div>
+          
+          {/* 导航栏 */}
+          <div className="flex items-center justify-between">
+            <nav className="flex items-center gap-6">
+              <a href="/" className="text-gray-600 font-display text-lg hover:text-bread-primary transition">
+                首页
+              </a>
+              <a href="/articles" className="text-gray-900 font-display font-semibold text-lg hover:text-bread-primary transition">
+                文章
+              </a>
+              <a href="/vocab" className="text-gray-600 font-display text-lg hover:text-bread-primary transition">
+                单词本
+              </a>
+            </nav>
+            
+            <div className="flex items-center gap-4">
               {isGuest ? (
                 <>
-                  <span className="px-3 py-1 rounded-full text-sm font-medium bg-gray-200 text-gray-700">
-                    👤 游客访问
+                  <span className="bread-tag bread-tag-secondary">
+                    👤 游客
                   </span>
-                  <a
-                    href="/login"
-                    className="px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white text-sm font-medium rounded-lg transition"
-                  >
+                  <a href="/login" className="bread-button-primary text-sm">
                     登录 / 注册
                   </a>
                 </>
               ) : (
                 <>
-                  <span className="px-3 py-1 rounded-full text-sm font-medium bg-gray-200 text-gray-700">
+                  <span className="bread-tag bread-tag-primary">
                     {userTargetExam}
                   </span>
-                  <span className="px-3 py-1 rounded-full text-sm font-medium bg-gray-200 text-gray-700">
+                  <span className="bread-tag bread-tag-secondary">
                     {majorCategory}
                   </span>
-                  <a
-                    href="/vocab"
-                    className="px-4 py-2 bg-white hover:bg-gray-50 text-gray-700 text-sm font-medium rounded-lg border border-gray-400 transition"
-                  >
-                    我的单词
-                  </a>
-                  <a
-                    href="/settings"
-                    className="p-2 text-gray-600 hover:text-orange-600 transition"
-                    title="设置"
-                  >
+                  <a href="/settings" className="text-gray-600 hover:text-bread-primary transition" title="设置">
                     ⚙️
                   </a>
                 </>
@@ -478,9 +512,11 @@ export default function ArticleReadPage() {
         </div>
       </header>
 
-      <main className="max-w-4xl mx-auto px-4 py-8">
-        <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
-          <div className="bg-gradient-to-r from-orange-50 to-amber-50 p-4 border-b">
+      {/* 主要内容 */}
+      <main className="max-w-6xl mx-auto px-4 py-8">
+        {/* 文章信息卡片 */}
+        <section className="bread-card mb-8">
+          <div className="p-6 border-b border-gray-200">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-3">
                 <a href="/articles" className="text-2xl hover:opacity-80 transition">←</a>
@@ -488,7 +524,7 @@ export default function ArticleReadPage() {
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-sm text-gray-600">切换难度:</span>
-                <div className="flex bg-white rounded-lg p-1">
+                <div className="flex bg-gray-100 rounded-lg p-1">
                   <button
                     onClick={() => {
                       setDisplayMode('CET4');
@@ -496,7 +532,7 @@ export default function ArticleReadPage() {
                     }}
                     className={`px-4 py-1.5 rounded-md text-sm font-medium transition ${
                       displayMode === 'CET4'
-                        ? 'bg-amber-500 text-white shadow'
+                        ? 'bg-bread-primary text-white shadow'
                         : 'text-gray-600 hover:text-gray-900'
                     }`}
                   >
@@ -509,7 +545,7 @@ export default function ArticleReadPage() {
                     }}
                     className={`px-4 py-1.5 rounded-md text-sm font-medium transition ${
                       displayMode === 'CET6'
-                        ? 'bg-amber-500 text-white shadow'
+                        ? 'bg-bread-primary text-white shadow'
                         : 'text-gray-600 hover:text-gray-900'
                     }`}
                   >
@@ -518,43 +554,50 @@ export default function ArticleReadPage() {
                 </div>
               </div>
             </div>
+            
             <div className="space-y-3">
-              <h2 className="text-xl font-bold text-gray-900 mb-2">
+              <h2 className="font-display text-2xl md:text-3xl font-bold text-gray-900">
                 {article.title_en}
               </h2>
+              
               {article.source_name && (
-                <p className="text-sm text-gray-600">
-                  来源: {article.source_name}
+                <p className="text-gray-600 flex items-center gap-2">
+                  <span>📰</span>
+                  <span>来源: {article.source_name}</span>
                 </p>
               )}
+              
               {article.source_published_at && (
-                <p className="text-sm text-gray-500">
-                  发布时间: {formatDate(article.source_published_at)}
+                <p className="text-gray-500 flex items-center gap-2">
+                  <span>📅</span>
+                  <span>发布时间: {formatDate(article.source_published_at)}</span>
                 </p>
               )}
+              
               <div className="flex items-center justify-between flex-wrap gap-4">
                 {article.source_url && (
                   <a
                     href={article.source_url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-blue-600 hover:underline"
+                    className="text-sm text-bread-primary hover:underline flex items-center gap-1"
                   >
-                    原文链接 ↗
+                    <span>🔗</span>
+                    <span>原文链接 ↗</span>
                   </a>
                 )}
+                
                 {article.subject_category && (
-                  <div className="px-4 py-2 bg-white/50 rounded-lg shadow-sm">
-                    <span className="text-sm font-medium text-gray-700">
-                      领域: {article.subject_category}
-                    </span>
-                  </div>
+                  <span className="bread-tag bread-tag-secondary">
+                    🎯 领域: {article.subject_category}
+                  </span>
                 )}
               </div>
             </div>
           </div>
 
-          <div className="p-8">
+          {/* 文章内容 */}
+          <div className="p-6 md:p-8">
             {enrichedTokens.length > 0 ? (
               <ArticleReader
                 tokens={enrichedTokens}
@@ -566,27 +609,29 @@ export default function ArticleReadPage() {
                 isGuest={isGuest}
               />
             ) : (
-              <div className="text-center text-gray-500 py-8">
-                暂无 token 数据
+              <div className="text-center text-gray-500 py-12">
+                <div className="text-6xl mb-4">📝</div>
+                <p className="font-display text-xl">暂无 token 数据</p>
               </div>
             )}
-            <p className="text-right text-xs text-gray-400 mt-4">
+            <p className="text-right text-xs text-gray-400 mt-6">
               文章改写由 MiniMax-M2.7 提供
             </p>
           </div>
 
+          {/* 中文译文 */}
           {translation && (
-            <div className="p-6 border-t bg-gray-50">
+            <div className="p-6 border-t border-gray-200 bg-gray-50">
               <button
                 onClick={() => setShowTranslation(!showTranslation)}
-                className="flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium mb-4"
+                className="flex items-center gap-2 text-bread-primary hover:text-bread-accent font-medium mb-4"
               >
                 <span>{showTranslation ? '▼' : '▶'}</span>
-                显示中文译文
+                <span>📖 显示中文译文</span>
               </button>
               {showTranslation && (
-                <div className="p-4 bg-white rounded-xl border">
-                  <p className="text-gray-800 leading-relaxed whitespace-pre-wrap mb-2">
+                <div className="p-4 bg-white rounded-xl border border-gray-200">
+                  <p className="text-gray-800 leading-relaxed whitespace-pre-wrap mb-3">
                     {translation}
                   </p>
                   <p className="text-right text-xs text-gray-400">
@@ -597,65 +642,88 @@ export default function ArticleReadPage() {
             </div>
           )}
 
-          <div className="p-6 border-t">
+          {/* 操作按钮 */}
+          <div className="p-6 border-t border-gray-200">
             {!isGuest && (
               <button
                 onClick={handleMarkAsRead}
-                className={`w-full py-3 rounded-lg font-medium transition mb-4 ${
+                className={`w-full py-3 rounded-xl font-medium transition mb-6 ${
                   isRead
                     ? 'bg-gray-200 text-gray-500 cursor-pointer hover:bg-gray-300'
-                    : 'bg-gray-400 hover:bg-gray-500 text-white'
+                    : 'bread-button-primary'
                 }`}
               >
-                {isRead ? '✓ 已完成阅读（再次点击取消）' : '标记为已完成阅读'}
+                {isRead ? '✅ 已完成阅读（再次点击取消）' : '📖 标记为已完成阅读'}
               </button>
             )}
 
+            {/* 上下篇文章导航 */}
             {articleList.length > 1 && (
               <div className="flex items-center justify-between gap-4">
                 {currentArticleIndex > 0 ? (
                   <a
                     href={`/articles/${articleList[currentArticleIndex - 1].id}`}
-                    className="flex-1 py-3 px-4 bg-gray-400 hover:bg-gray-500 text-white text-center rounded-lg font-medium transition"
+                    className="flex-1 py-3 px-4 bread-button-secondary text-center"
                   >
                     ← 上一篇
                   </a>
                 ) : (
-                  <div className="flex-1 py-3 px-4 bg-gray-200 text-gray-500 text-center rounded-lg font-medium cursor-default">
+                  <div className="flex-1 py-3 px-4 bg-gray-200 text-gray-500 text-center rounded-xl font-medium cursor-default">
                     已是第一篇
                   </div>
                 )}
 
-                <div className="text-sm text-gray-500">
+                <div className="text-sm text-gray-500 font-display">
                   {currentArticleIndex + 1} / {articleList.length}
                 </div>
 
                 {currentArticleIndex < articleList.length - 1 ? (
                   <a
                     href={`/articles/${articleList[currentArticleIndex + 1].id}`}
-                    className="flex-1 py-3 px-4 bg-gray-400 hover:bg-gray-500 text-white text-center rounded-lg font-medium transition"
+                    className="flex-1 py-3 px-4 bread-button-secondary text-center"
                   >
                     下一篇 →
                   </a>
                 ) : (
-                  <div className="flex-1 py-3 px-4 bg-gray-200 text-gray-500 text-center rounded-lg font-medium cursor-default">
+                  <div className="flex-1 py-3 px-4 bg-gray-200 text-gray-500 text-center rounded-xl font-medium cursor-default">
                     已是最后一篇
                   </div>
                 )}
               </div>
             )}
           </div>
-        </div>
+        </section>
 
-        <div className="mt-6 bg-white rounded-xl p-4 shadow text-sm text-gray-600">
-          <h4 className="font-medium text-gray-900 mb-2">阅读说明</h4>
-          <ul className="space-y-1">
-            <li>• <strong>普通文本</strong>：Level 0，基础词汇</li>
-            <li>• <strong>橙色加粗</strong>：Level 1，当前学习目标重点词</li>
-            <li>• <strong>灰色文字</strong>：Level 2，超纲词，点击可查看释义</li>
+        {/* 阅读说明 */}
+        <section className="bread-card p-6">
+          <h4 className="font-display font-bold text-gray-900 mb-4">📖 阅读说明</h4>
+          <ul className="space-y-2 text-sm text-gray-600">
+            <li className="flex items-center gap-2">
+              <span className="w-4 h-4 bg-gray-200 rounded"></span>
+              <span><strong>普通文本</strong>：Level 0，基础词汇</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <span className="w-4 h-4 word-highlight rounded"></span>
+              <span><strong>高亮加粗</strong>：Level 1，当前学习目标重点词</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <span className="w-4 h-4 bg-gray-400 rounded"></span>
+              <span><strong>灰色文字</strong>：Level 2，超纲词，点击可查看释义</span>
+            </li>
           </ul>
-        </div>
+        </section>
       </main>
+
+      {/* 报纸风格底部 */}
+      <footer className="border-t-2 border-gray-900 bg-white mt-12">
+        <div className="max-w-6xl mx-auto px-4 py-8">
+          <div className="newspaper-divider">
+            <p className="text-center text-gray-600 text-sm font-body">
+              © 2026 单词面包 WordBread · 让英语学习更简单
+            </p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
