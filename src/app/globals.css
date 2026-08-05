@@ -126,7 +126,7 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 2px;
   font-size: 0.875rem;
   transition: all 0.2s ease;
-  background: white;
+  background: var(--bread-warm);
 }
 
 .bread-input:focus {
