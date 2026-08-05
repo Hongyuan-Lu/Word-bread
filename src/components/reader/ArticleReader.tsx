@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { useState, useCallback, useRef, useEffect } from 'react';
 import type { ArticleToken } from '@/types/article';
@@ -214,11 +214,11 @@ export function ArticleReader({
               if (token.token_type === 'word' && token.lemma) {
                 const enriched = token as EnrichedToken;
                 const displayLevel = enriched.displayLevel ?? 
-                  classifyDisplayLevel(
-                    enriched.exam_level || 'common',
-                    targetExam,
-                    getVocabType(token.lemma!)
-                  );
+                  classifyDisplayLevel({
+                    targetExam: targetExam,
+                    examLevel: (enriched.exam_level || 'common') as any,
+                    masteryStatus: getVocabType(token.lemma!) ? 'learning' : 'unknown'
+                  }).displayLevel;;
                 const isSelected = selectedToken?.lemma === token.lemma;
                 
                 return (
