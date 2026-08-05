@@ -206,7 +206,7 @@ export default function ArticlesPage() {
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
             <div>
               <h2 className="font-display text-xl font-bold text-[var(--bread-text)] mb-1">
-                {getEffectiveCategory()} 文章
+                <strong>{getEffectiveCategory()}</strong> 文章
               </h2>
               <p className="text-[var(--bread-text-secondary)] text-xs">
                 为 {currentTargetExam} 水平改写的新闻文章
@@ -299,7 +299,7 @@ export default function ArticlesPage() {
       </main>
 
       {/* 底部 */}
-      <footer className="border-t border-[var(--bread-text)] bg-white mt-12">
+      <footer className="border-t border-[var(--bread-text)] bg-white">
         <div className="max-w-5xl mx-auto px-6 py-8">
           <p className="text-center text-[var(--bread-text-secondary)] text-xs">
             2026 单词面包 WordBread. 保留所有权利。
