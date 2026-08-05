@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useMemo } from 'react';
 import { useParams, usePathname } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
 import { ArticleReader } from '@/components/reader';
@@ -112,7 +112,7 @@ export default function ArticleReadPage() {
   const [currentArticleIndex, setCurrentArticleIndex] = useState<number>(-1);
   const [isGuest, setIsGuest] = useState(false);
 
-  const supabase = createClient();
+  const supabase = useMemo(() => createClient(), []);
 
   useEffect(() => {
     async function fetchUserProfile() {

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { usePathname } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
 import type { MajorCategory, TargetExam } from '@/types/vocab';
@@ -17,7 +17,7 @@ export default function HomePage() {
   const [isGuest, setIsGuest] = useState(false);
   const pathname = usePathname();
 
-  const supabase = createClient();
+  const supabase = useMemo(() => createClient(), []);
 
   useEffect(() => {
     const fetchData = async () => {

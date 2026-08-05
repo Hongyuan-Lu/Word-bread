@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { usePathname } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
 import type { VocabType, TargetExam, MajorCategory } from '@/types/vocab';
@@ -27,7 +27,7 @@ export default function VocabPage() {
   const [wordGlosses, setWordGlosses] = useState<Map<string, string>>(new Map());
   const [wordExamLevels, setWordExamLevels] = useState<Map<string, string>>(new Map());
   const pathname = usePathname();
-  const supabase = createClient();
+  const supabase = useMemo(() => createClient(), []);
 
   useEffect(() => {
     async function checkAuth() {
