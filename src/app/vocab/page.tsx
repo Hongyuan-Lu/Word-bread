@@ -80,14 +80,21 @@ export default function VocabPage() {
       if (response.ok) {
         const data = await response.json();
         setWordStates(data);
+        // 获取所有有 word_id 的单词的等级
+        const allWordIds = data
+          .filter((w: WordState) => w.word_id)
+          .map((w: WordState) => w.word_id);
+        
+        // 获取需要查询释义的单词（没有 gloss_snapshot 的）
         const wordIdsWithGloss = data
           .filter((w: WordState) => w.word_id && !w.gloss_snapshot)
           .map((w: WordState) => w.word_id);
-        if (wordIdsWithGloss.length > 0) {
+        
+        if (allWordIds.length > 0) {
           const { data: wordsData } = await supabase
             .from('words')
             .select('id, cn_gloss, exam_level')
-            .in('id', wordIdsWithGloss);
+            .in('id', allWordIds);
           if (wordsData) {
             const glossMap = new Map<string, string>();
             const examLevelMap = new Map<string, string>();
