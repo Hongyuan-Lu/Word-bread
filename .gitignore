@@ -74,3 +74,8 @@ public/globe.svg
 public/next.svg
 public/vercel.svg
 public/window.svg
+
+# Backup files
+*.backup
+*.bak
+*.current-backup
