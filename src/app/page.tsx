@@ -178,7 +178,7 @@ export default function HomePage() {
               <h4 className="font-display font-bold text-[var(--bread-text)] mb-3 text-sm">导航</h4>
               <div className="flex gap-4 text-xs">
                 <a href="/articles" className="text-[var(--bread-text-secondary)] hover:text-[var(--bread-accent)] transition">文章列表</a>
-                <a href="/vocab" className="text-[var(--bread-text-secondary)] hover:text-[var(--bread-accent)] transition">我的单词</a>
+                <a href="/vocab" className="text-[var(--bread-text-secondary)] hover:text-[var(--bread-accent)] transition">单词本</a>
                 <a href="/settings" className="text-[var(--bread-text-secondary)] hover:text-[var(--bread-accent)] transition">设置</a>
               </div>
             </div>
