@@ -281,7 +281,7 @@ export default function VocabPage() {
         </section>
 
         {/* 筛选栏 */}
-        <section className="bread-card p-4 mb-8">
+        <section className="bread-card p-4 mb-8 cursor-default">
           <div className="flex items-center gap-4">
             <span className="text-xs text-[var(--bread-text-secondary)] tracking-wider">筛选</span>
             <div className="flex gap-2">
