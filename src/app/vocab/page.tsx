@@ -21,6 +21,7 @@ export default function VocabPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
   const [filter, setFilter] = useState<'all' | 'study_plan' | 'difficult'>('all');
+  const [examLevelFilter, setExamLevelFilter] = useState<Set<string>>(new Set(['all']));
   const [profile, setProfile] = useState<{ target_exam: TargetExam; major_category: MajorCategory | null } | null>(null);
   const [revealedGlosses, setRevealedGlosses] = useState<Set<string>>(new Set());
   const [wordGlosses, setWordGlosses] = useState<Map<string, string>>(new Map());
@@ -136,14 +137,47 @@ export default function VocabPage() {
     return null;
   };
 
+  const toggleExamLevel = (level: string) => {
+    setExamLevelFilter(prev => {
+      const next = new Set(prev);
+      if (level === 'all') {
+        return new Set(['all']);
+      }
+      next.delete('all');
+      if (next.has(level)) {
+        next.delete(level);
+        if (next.size === 0) return new Set(['all']);
+      } else {
+        next.add(level);
+      }
+      return next;
+    });
+  };
+
   const getExamLevel = (word: WordState): string | null => {
     if (word.word_id && wordExamLevels.has(word.word_id)) return wordExamLevels.get(word.word_id)!;
     return null;
   };
 
+  const getExamLevel = (word: WordState): string => {
+    if (word.word_id && wordExamLevels.has(word.word_id)) {
+      return wordExamLevels.get(word.word_id)!;
+    }
+    return 'out_of_syllabus';
+  };
+
   const filteredWords = wordStates.filter(w => {
-    if (filter === 'all') return true;
-    return w.vocab_type === filter;
+    // vocab_type 筛选
+    if (filter !== 'all' && w.vocab_type !== filter) return false;
+    
+    // exam_level 筛选
+    if (!examLevelFilter.has('all')) {
+      const level = getExamLevel(w);
+      const displayLevel = level === 'common' ? 'common' : level === 'CET4' ? 'CET4' : level === 'CET6' ? 'CET6' : 'out_of_syllabus';
+      if (!examLevelFilter.has(displayLevel)) return false;
+    }
+    
+    return true;
   });
 
   const studyPlanCount = wordStates.filter(w => w.vocab_type === 'study_plan').length;
