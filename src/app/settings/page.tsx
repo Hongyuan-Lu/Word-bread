@@ -46,7 +46,7 @@ export default function SettingsPage() {
     setMessage(null);
     try {
       const { data: { user } } = await supabase.auth.getUser();
-      if (!user) throw new Error('用户未登�?);
+      if (!user) throw new Error('用户未登录');
       const { data: existingProfile } = await supabase.from('profiles').select('id').eq('user_id', user.id).single();
       if (existingProfile) {
         await supabase.from('profiles').update({ target_exam: exam, updated_at: new Date().toISOString() }).eq('user_id', user.id);
@@ -68,7 +68,7 @@ export default function SettingsPage() {
     setMessage(null);
     try {
       const { data: { user } } = await supabase.auth.getUser();
-      if (!user) throw new Error('用户未登�?);
+      if (!user) throw new Error('用户未登录');
       const { data: existingProfile } = await supabase.from('profiles').select('id').eq('user_id', user.id).single();
       if (existingProfile) {
         await supabase.from('profiles').update({ major_category: category, updated_at: new Date().toISOString() }).eq('user_id', user.id);
@@ -90,7 +90,7 @@ export default function SettingsPage() {
       await supabase.auth.signOut();
       window.location.href = '/';
     } catch (err) {
-      setMessage({ type: 'error', text: '退出失�? });
+      setMessage({ type: 'error', text: '退出失败' });
     } finally {
       setSaving(false);
     }
@@ -99,7 +99,7 @@ export default function SettingsPage() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[var(--bread-background)]">
-        <p className="text-[var(--bread-text-secondary)] font-body text-sm tracking-widest">加载�?..</p>
+        <p className="text-[var(--bread-text-secondary)] font-body text-sm tracking-widest">加载中...</p>
       </div>
     );
   }
@@ -112,7 +112,7 @@ export default function SettingsPage() {
             <div className="text-xs text-[var(--bread-text-secondary)] font-body tracking-wider">
               {new Date().toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' })}
             </div>
-            <div className="text-xs text-[var(--bread-text-secondary)] font-body tracking-wider">每日精选英文新�?/div>
+            <div className="text-xs text-[var(--bread-text-secondary)] font-body tracking-wider">每日精选英文新闻</div>
           </div>
           <div className="text-center mb-4">
             <h1 className="font-display text-4xl md:text-5xl font-bold text-[var(--bread-text)] mb-3 tracking-tight">设置</h1>
@@ -122,7 +122,7 @@ export default function SettingsPage() {
             <nav className="flex items-center gap-8">
               <a href="/" className="text-[var(--bread-text-secondary)] font-body text-sm tracking-wider hover:text-[var(--bread-accent)] transition">首页</a>
               <a href="/articles" className="text-[var(--bread-text-secondary)] font-body text-sm tracking-wider hover:text-[var(--bread-accent)] transition">文章</a>
-              <a href="/vocab" className="text-[var(--bread-text-secondary)] font-body text-sm tracking-wider hover:text-[var(--bread-accent)] transition">单词�?/a>
+              <a href="/vocab" className="text-[var(--bread-text-secondary)] font-body text-sm tracking-wider hover:text-[var(--bread-accent)] transition">单词本</a>
             </nav>
             <div className="flex items-center gap-3">
               <span className="bread-tag bread-tag-primary">{profile?.target_exam ?? 'CET4'}</span>
@@ -153,7 +153,7 @@ export default function SettingsPage() {
                 <div className="text-sm text-[var(--bread-text-secondary)] mb-4">大学英语四级</div>
                 <ul className="space-y-2 text-sm text-[var(--bread-text-secondary)]">
                   <li>基础词汇为主</li>
-                  <li>简单句式结�?/li>
+                  <li>简单句式结构</li>
                   <li>适合入门学习</li>
                 </ul>
               </button>
@@ -162,7 +162,7 @@ export default function SettingsPage() {
                 <div className="font-display font-bold text-xl text-[var(--bread-text)] mb-2">CET-6</div>
                 <div className="text-sm text-[var(--bread-text-secondary)] mb-4">大学英语六级</div>
                 <ul className="space-y-2 text-sm text-[var(--bread-text-secondary)]">
-                  <li>更接近真实新�?/li>
+                  <li>更接近真实新闻</li>
                   <li>适度复杂句式</li>
                   <li>提升阅读挑战</li>
                 </ul>
@@ -174,7 +174,7 @@ export default function SettingsPage() {
         <section className="bread-card mb-8">
           <div className="p-6 border-b border-[var(--bread-border)]">
             <h2 className="font-display text-xl font-bold text-[var(--bread-text)] mb-1">专业兴趣</h2>
-            <p className="text-[var(--bread-text-secondary)] text-xs">选择您感兴趣的专业领域，我们将为您推荐更相关的内�?/p>
+            <p className="text-[var(--bread-text-secondary)] text-xs">选择您感兴趣的专业领域，我们将为您推荐更相关的内容</p>
           </div>
           <div className="p-6">
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
@@ -205,11 +205,18 @@ export default function SettingsPage() {
               </div>
             </div>
             <button onClick={handleSignOut} disabled={saving} className="w-full px-4 py-3 bg-red-50 hover:bg-red-100 text-red-600 text-sm font-medium rounded border border-red-200 transition">
-              �˳���¼
+              退出登录
             </button>
           </div>
         </section>
       </main>
+
+      <footer className="border-t border-[var(--bread-text)] bg-white">
+        <div className="max-w-5xl mx-auto px-6 py-8">
+          <p className="text-center text-[var(--bread-text-secondary)] text-xs">
+            2026 单词面包 WordBread. 保留所有权利。
+          </p>
+        </div>
       </footer>
     </div>
   );
