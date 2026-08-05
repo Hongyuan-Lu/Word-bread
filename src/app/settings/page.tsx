@@ -127,7 +127,7 @@ export default function SettingsPage() {
             <div className="flex items-center gap-3">
               <span className="bread-tag bread-tag-primary">{profile?.target_exam ?? 'CET4'}</span>
               <span className="bread-tag bread-tag-primary">{profile?.major_category ?? '综合'}</span>
-              <a href="/settings" className="text-[var(--bread-text)] font-medium text-xs">设置</a>
+              <a href="/settings" className="text-[var(--bread-text)] font-body text-base font-semibold tracking-wider">设置</a>
             </div>
           </div>
         </div>
@@ -187,32 +187,26 @@ export default function SettingsPage() {
           </div>
         </section>
 
-        <section className="bread-card mb-8">
+        <section className="bread-card mb-3">
           <div className="p-6 border-b border-[var(--bread-border)]">
             <h2 className="font-display text-xl font-bold text-[var(--bread-text)] mb-1">账户管理</h2>
           </div>
-          <div className="p-6 space-y-4">
-            <div className="flex items-center justify-between p-4 bg-[var(--bread-highlight)] rounded">
-              <div className="text-sm text-[var(--bread-text)]">当前学习目标</div>
-              <div className="bread-tag bread-tag-primary">{profile?.target_exam === 'CET4' ? 'CET-4' : 'CET-6'}</div>
+          <div className="p-6 space-y-6">
+            <div className="flex items-center justify-center p-4 border border-[var(--bread-border)] rounded">
+              <div className="flex items-center justify-center gap-25">
+                <div className="flex items-center gap-2">
+                  <span className="text-sm text-[var(--bread-text-secondary)]">学习目标</span>
+                  <span className="bread-tag bread-tag-primary">{profile?.target_exam === 'CET4' ? 'CET-4' : 'CET-6'}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-sm text-[var(--bread-text-secondary)]">专业兴趣</span>
+                  <span className="bread-tag bread-tag-primary">{profile?.major_category || '综合'}</span>
+                </div>
+              </div>
             </div>
-            <div className="flex items-center justify-between p-4 bg-[var(--bread-highlight)] rounded">
-              <div className="text-sm text-[var(--bread-text)]">专业兴趣</div>
-              <div className="bread-tag bread-tag-primary">{profile?.major_category || '综合'}</div>
-            </div>
-            <button onClick={handleSignOut} disabled={saving} className="w-full px-4 py-3 bg-red-50 hover:bg-red-100 text-red-600 text-sm font-medium rounded border border-red-200 transition">
-              退出登录
-            </button>
-          </div>
-        </section>
-      </main>
-
-      <footer className="border-t border-[var(--bread-text)] bg-white">
-        <div className="max-w-5xl mx-auto px-6 py-8">
-          <p className="text-center text-[var(--bread-text-secondary)] text-xs">
-            2026 单词面包 WordBread. 保留所有权利。
-          </p>
-        </div>
+            <button onClick={handleSignOut} disabled={saving} className="w-full px-4 py-3 bg-[var(--bread-highlight)] hover:bg-[var(--bread-border)] text-[var(--bread-text-secondary)] hover:text-[var(--bread-text)] text-sm font-medium rounded transition">
+assName="w-full px-4 py-3 bg-red-50 hover:bg-red-100 text-red-600 text-sm font-medium rounded border border-red-200 transition">
+</div>
       </footer>
     </div>
   );

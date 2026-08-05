@@ -255,7 +255,7 @@ export default function VocabPage() {
             <div className="flex items-center gap-3">
               <span className="bread-tag bread-tag-primary">{profile?.target_exam ?? 'CET4'}</span>
               <span className="bread-tag bread-tag-primary">{profile?.major_category ?? '综合'}</span>
-              <a href="/settings" className="text-[var(--bread-text-secondary)] hover:text-[var(--bread-text)] transition text-xs">设置</a>
+              <a href="/settings" className="text-[var(--bread-text-secondary)] font-body text-sm tracking-wider hover:text-[var(--bread-accent)] transition">设置</a>
             </div>
           </div>
         </div>
@@ -266,15 +266,15 @@ export default function VocabPage() {
         <section className="bread-card-highlight p-8 mb-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
-              <div className="text-2xl font-bold text-[var(--bread-text)] mb-1" style={{ fontFamily: 'Arial, sans-serif' }}>{wordStates.length}</div>
+              <div className="text-3xl font-bold text-[var(--bread-text)] mb-1" style={{ fontFamily: 'Arial, sans-serif' }}>{wordStates.length}</div>
               <div className="text-xs text-[var(--bread-text-secondary)] tracking-wider">总单词数</div>
             </div>
             <div className="text-center border-x border-[var(--bread-border)] px-8">
-              <div className="text-2xl font-bold text-[var(--bread-text)] mb-1" style={{ fontFamily: 'Arial, sans-serif' }}>{studyPlanCount}</div>
+              <div className="text-3xl font-bold text-[var(--bread-text)] mb-1" style={{ fontFamily: 'Arial, sans-serif' }}>{studyPlanCount}</div>
               <div className="text-xs text-[var(--bread-text-secondary)] tracking-wider">学习计划</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-[var(--bread-text)] mb-1" style={{ fontFamily: 'Arial, sans-serif' }}>{difficultCount}</div>
+              <div className="text-3xl font-bold text-[var(--bread-text)] mb-1" style={{ fontFamily: 'Arial, sans-serif' }}>{difficultCount}</div>
               <div className="text-xs text-[var(--bread-text-secondary)] tracking-wider">较难单词</div>
             </div>
           </div>

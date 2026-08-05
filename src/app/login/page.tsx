@@ -83,6 +83,7 @@ export default function LoginPage() {
           <h1 className="font-display text-4xl font-bold text-[var(--bread-text)] mb-2">单词面包</h1>
           <p className="text-xs text-[var(--bread-text-secondary)] font-display italic mb-6">AI 英语新闻阅读工具</p>
           
+          <div className="border-t-1 border-[var(--bread-text)] my-6"></div>
           <h2 className="font-display text-2xl font-bold text-[var(--bread-text)] mb-2">
             {isSignUp ? '创建账户' : '欢迎回来'}
           </h2>
