@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { useEffect, useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
@@ -99,7 +99,7 @@ export default function SettingsPage() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[var(--bread-background)]">
-        <p className="text-[var(--bread-text-secondary)] font-body text-sm tracking-widest">加载中</p>
+        <p className="text-[var(--bread-text-secondary)] font-body text-sm tracking-widest">加载中...</p>
       </div>
     );
   }

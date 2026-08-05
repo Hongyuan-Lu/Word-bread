@@ -412,7 +412,7 @@ export default function ArticleReadPage() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[var(--bread-background)]">
         <div className="text-center">
-          <p className="text-[var(--bread-text-secondary)] font-body text-sm tracking-widest">加载中</p>
+          <p className="text-[var(--bread-text-secondary)] font-body text-sm tracking-widest">加载中...</p>
         </div>
       </div>
     );

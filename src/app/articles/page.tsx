@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
@@ -135,7 +135,7 @@ export default function ArticlesPage() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[var(--bread-background)]">
         <div className="text-center">
-          <p className="text-[var(--bread-text-secondary)] font-body text-sm tracking-widest">加载中</p>
+          <p className="text-[var(--bread-text-secondary)] font-body text-sm tracking-widest">加载中...</p>
         </div>
       </div>
     );
@@ -177,7 +177,7 @@ export default function ArticlesPage() {
           <div className="flex items-center justify-between pt-3 border-t border-[var(--bread-border)]">
             <nav className="flex items-center gap-8">
               <a href="/" className="text-[var(--bread-text-secondary)] font-body text-sm tracking-wider hover:text-[var(--bread-accent)] transition">首页</a>
-              <a href="/articles" className="text-[var(--bread-text)] font-body text-sm font-medium tracking-wider hover:text-[var(--bread-accent)] transition">文章</a>
+              <a href="/articles" className="text-[var(--bread-text)] font-body text-base font-semibold tracking-wider hover:text-[var(--bread-accent)] transition">文章</a>
               <a href="/vocab" className="text-[var(--bread-text-secondary)] font-body text-sm tracking-wider hover:text-[var(--bread-accent)] transition">单词本</a>
             </nav>
             
