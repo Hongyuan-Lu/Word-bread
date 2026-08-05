@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
@@ -141,7 +141,7 @@ export default function HomePage() {
 
         {/* 功能入口 */}
         <section className="mb-12">
-          <div className="border-t border-[var(--bread-border)] pt-6 mb-6">
+          <div className="border-t border-[var(--bread-text)] pt-6 mb-6">
             <h2 className="font-display text-xl font-bold text-[var(--bread-text)]">开始学习</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -170,7 +170,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-6">
             <div>
               <h4 className="font-display font-bold text-[var(--bread-text)] mb-3 text-sm">使用方法</h4>
-              <ol className="space-y-2 text-xs text-[var(--bread-text-secondary)] list-decimal list-inside">
+              <ol className="space-y-2 text-xs text-[var(--bread-text-secondary)] list-disc list-inside">
                 <li>每日阅读一篇文章，约 10-15 分钟</li>
                 <li>点击高亮词汇查看释义并保存</li>
                 <li>在单词本中复习已保存的词汇</li>
