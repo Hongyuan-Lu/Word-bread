@@ -135,6 +135,16 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 0 0 2px rgba(184, 149, 106, 0.15);
 }
 
+/* 覆盖浏览器自动填充的默认蓝色背景 */
+.bread-input:-webkit-autofill,
+.bread-input:-webkit-autofill:hover,
+.bread-input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px var(--bread-warm) inset !important;
+  -webkit-text-fill-color: var(--bread-text) !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+
 /* 导航栏样式 */
 .bread-navbar {
   background: var(--bread-surface);
