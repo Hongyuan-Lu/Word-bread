@@ -281,19 +281,26 @@ export default function VocabPage() {
         </section>
 
         {/* 筛选栏 */}
-        <section className="bread-card p-4 mb-8 cursor-default">
-          <div className="flex items-center gap-4">
-            <span className="text-xs text-[var(--bread-text-secondary)] tracking-wider">筛选</span>
-            <div className="flex gap-2">
-              <button onClick={() => setFilter('all')} className={`px-4 py-2 rounded text-xs font-medium transition ${filter === 'all' ? 'bg-[var(--bread-text)] text-white' : 'bg-[var(--bread-highlight)] text-[var(--bread-text)] hover:bg-[var(--bread-border)]'}`}>
-                全部 ({wordStates.length})
-              </button>
-              <button onClick={() => setFilter('study_plan')} className={`px-4 py-2 rounded text-xs font-medium transition ${filter === 'study_plan' ? 'bg-[var(--bread-text)] text-white' : 'bg-[var(--bread-highlight)] text-[var(--bread-text)] hover:bg-[var(--bread-border)]'}`}>
-                学习计划 ({studyPlanCount})
-              </button>
-              <button onClick={() => setFilter('difficult')} className={`px-4 py-2 rounded text-xs font-medium transition ${filter === 'difficult' ? 'bg-[var(--bread-text)] text-white' : 'bg-[var(--bread-highlight)] text-[var(--bread-text)] hover:bg-[var(--bread-border)]'}`}>
-                较难单词 ({difficultCount})
-              </button>
+        {/* 筛选栏 */}
+        <section className="bread-card p-4 mb-8">
+          <div className="space-y-3">
+            <div className="flex items-center gap-4">
+              <span className="text-xs text-[var(--bread-text-secondary)] tracking-wider w-12">类型</span>
+              <div className="flex gap-2">
+                <button onClick={() => setFilter('all')} className={`px-4 py-2 rounded text-xs font-medium transition ${filter === 'all' ? 'bg-[var(--bread-text)] text-white' : 'bg-[var(--bread-highlight)] text-[var(--bread-text)] hover:bg-[var(--bread-border)]'}`}>全部 ({wordStates.length})</button>
+                <button onClick={() => setFilter('study_plan')} className={`px-4 py-2 rounded text-xs font-medium transition ${filter === 'study_plan' ? 'bg-[var(--bread-text)] text-white' : 'bg-[var(--bread-highlight)] text-[var(--bread-text)] hover:bg-[var(--bread-border)]'}`}>学习计划 ({studyPlanCount})</button>
+                <button onClick={() => setFilter('difficult')} className={`px-4 py-2 rounded text-xs font-medium transition ${filter === 'difficult' ? 'bg-[var(--bread-text)] text-white' : 'bg-[var(--bread-highlight)] text-[var(--bread-text)] hover:bg-[var(--bread-border)]'}`}>较难单词 ({difficultCount})</button>
+              </div>
+            </div>
+            <div className="flex items-center gap-4">
+              <span className="text-xs text-[var(--bread-text-secondary)] tracking-wider w-12">等级</span>
+              <div className="flex gap-2 flex-wrap">
+                <button onClick={() => toggleExamLevel('all')} className={`px-3 py-2 rounded text-xs font-medium transition ${examLevelFilter.has('all') ? 'bg-[var(--bread-text)] text-white' : 'bg-[var(--bread-highlight)] text-[var(--bread-text)] hover:bg-[var(--bread-border)]'}`}>全部</button>
+                <button onClick={() => toggleExamLevel('common')} className={`px-3 py-2 rounded text-xs font-medium transition ${examLevelFilter.has('common') ? 'bg-[var(--bread-text)] text-white' : 'bg-[var(--bread-highlight)] text-[var(--bread-text)] hover:bg-[var(--bread-border)]'}`}>常见词</button>
+                <button onClick={() => toggleExamLevel('CET4')} className={`px-3 py-2 rounded text-xs font-medium transition ${examLevelFilter.has('CET4') ? 'bg-[var(--bread-text)] text-white' : 'bg-[var(--bread-highlight)] text-[var(--bread-text)] hover:bg-[var(--bread-border)]'}`}>CET 4</button>
+                <button onClick={() => toggleExamLevel('CET6')} className={`px-3 py-2 rounded text-xs font-medium transition ${examLevelFilter.has('CET6') ? 'bg-[var(--bread-text)] text-white' : 'bg-[var(--bread-highlight)] text-[var(--bread-text)] hover:bg-[var(--bread-border)]'}`}>CET 6</button>
+                <button onClick={() => toggleExamLevel('out_of_syllabus')} className={`px-3 py-2 rounded text-xs font-medium transition ${examLevelFilter.has('out_of_syllabus') ? 'bg-[var(--bread-text)] text-white' : 'bg-[var(--bread-highlight)] text-[var(--bread-text)] hover:bg-[var(--bread-border)]'}`}>超纲词</button>
+              </div>
             </div>
           </div>
         </section>
