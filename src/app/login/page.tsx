@@ -100,7 +100,7 @@ export default function LoginPage() {
           <div className={`mb-6 p-4 text-sm ${
             message.type === 'success' ? 'bg-green-50 text-green-800 border border-green-200' :
             message.type === 'error' ? 'bg-red-50 text-red-800 border border-red-200' :
-            'bg-blue-50 text-blue-800 border border-blue-200'
+            'bg-[var(--bread-warm)] text-[var(--bread-text)] border border-[var(--bread-border)]'
           }`}>
             {message.text}
           </div>
