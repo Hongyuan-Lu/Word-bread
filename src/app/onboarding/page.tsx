@@ -1,6 +1,6 @@
 ﻿'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { MAJOR_CATEGORIES, type MajorCategory, type TargetExam } from '@/types/vocab';
 
@@ -13,7 +13,7 @@ export default function OnboardingPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const supabase = createClient();
+  const supabase = useMemo(() => createClient(), []);
 
   const handleExamSelect = (exam: TargetExam) => {
     setSelectedExam(exam);
