@@ -135,7 +135,7 @@ export default function ArticlesPage() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[var(--bread-background)]">
         <div className="text-center">
-          <p className="text-[var(--bread-text-secondary)] font-body text-sm tracking-widest uppercase">Loading</p>
+          <p className="text-[var(--bread-text-secondary)] font-body text-sm tracking-widest">加载中</p>
         </div>
       </div>
     );
@@ -149,29 +149,29 @@ export default function ArticlesPage() {
       {/* 报纸风格头部 */}
       <header className="bread-navbar">
         <div className="max-w-5xl mx-auto px-6 py-4">
-          {/* 顶部日期和期号 */}
+          {/* 顶部日期 */}
           <div className="flex items-center justify-between mb-4 pb-4 border-b border-[var(--bread-text)]">
-            <div className="text-xs text-[var(--bread-text-secondary)] font-body tracking-wider uppercase">
-              {new Date().toLocaleDateString('en-US', { 
-                weekday: 'long',
+            <div className="text-xs text-[var(--bread-text-secondary)] font-body tracking-wider">
+              {new Date().toLocaleDateString('zh-CN', { 
                 year: 'numeric', 
                 month: 'long', 
-                day: 'numeric'
+                day: 'numeric',
+                weekday: 'long'
               })}
             </div>
-            <div className="text-xs text-[var(--bread-text-secondary)] font-body tracking-wider uppercase">
-              Daily Edition
+            <div className="text-xs text-[var(--bread-text-secondary)] font-body tracking-wider">
+              每日精选
             </div>
           </div>
           
           {/* 标题栏 */}
           <div className="text-center mb-4">
             <h1 className="font-display text-4xl md:text-5xl font-bold text-[var(--bread-text)] mb-3 tracking-tight">
-              Articles
+              文章列表
             </h1>
             <div className="newspaper-divider">
               <p className="text-sm text-[var(--bread-text-secondary)] font-display italic tracking-wide">
-                Browse news articles rewritten for CET learners
+                浏览适合您 CET 水平的英文新闻
               </p>
             </div>
           </div>
@@ -179,14 +179,14 @@ export default function ArticlesPage() {
           {/* 导航栏 */}
           <div className="flex items-center justify-between">
             <nav className="flex items-center gap-8">
-              <a href="/" className="text-[var(--bread-text-secondary)] font-body text-sm tracking-wider uppercase hover:text-[var(--bread-accent)] transition">
-                Home
+              <a href="/" className="text-[var(--bread-text-secondary)] font-body text-sm tracking-wider hover:text-[var(--bread-accent)] transition">
+                首页
               </a>
-              <a href="/articles" className="text-[var(--bread-text)] font-body text-sm font-medium tracking-wider uppercase hover:text-[var(--bread-accent)] transition">
-                Articles
+              <a href="/articles" className="text-[var(--bread-text)] font-body text-sm font-medium tracking-wider hover:text-[var(--bread-accent)] transition">
+                文章
               </a>
-              <a href="/vocab" className="text-[var(--bread-text-secondary)] font-body text-sm tracking-wider uppercase hover:text-[var(--bread-accent)] transition">
-                Vocabulary
+              <a href="/vocab" className="text-[var(--bread-text-secondary)] font-body text-sm tracking-wider hover:text-[var(--bread-accent)] transition">
+                单词本
               </a>
             </nav>
             
@@ -194,10 +194,10 @@ export default function ArticlesPage() {
               {isGuest ? (
                 <>
                   <span className="bread-tag bread-tag-secondary">
-                    Guest
+                    游客
                   </span>
                   <a href="/login" className="bread-button-primary text-xs">
-                    Sign In
+                    登录
                   </a>
                 </>
               ) : (
@@ -206,10 +206,10 @@ export default function ArticlesPage() {
                     {profile?.target_exam ?? 'CET4'}
                   </span>
                   <span className="bread-tag bread-tag-secondary">
-                    {profile?.major_category ?? 'General'}
+                    {profile?.major_category ?? '综合'}
                   </span>
                   <a href="/settings" className="text-[var(--bread-text-secondary)] hover:text-[var(--bread-text)] transition text-sm">
-                    Settings
+                    设置
                   </a>
                 </>
               )}
@@ -220,27 +220,27 @@ export default function ArticlesPage() {
 
       {/* 主要内容 */}
       <main className="max-w-5xl mx-auto px-6 py-10">
-        {/* 筛选栏 */}
-        <section className="bread-card p-6 mb-8">
+        {/* 筛选栏 - 高亮背景 */}
+        <section className="bread-card-highlight p-6 mb-8">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
             <div>
               <h2 className="font-display text-xl font-bold text-[var(--bread-text)] mb-1">
-                {getEffectiveCategory()} Articles
+                {getEffectiveCategory()} 文章
               </h2>
               <p className="text-[var(--bread-text-secondary)] text-xs">
-                News articles rewritten for {currentTargetExam} level
+                为 {currentTargetExam} 水平改写的新闻文章
               </p>
             </div>
             
             <div className="flex flex-wrap items-center gap-4">
               <div className="flex items-center gap-2">
-                <label className="text-xs text-[var(--bread-text-secondary)] tracking-wider uppercase">Category</label>
+                <label className="text-xs text-[var(--bread-text-secondary)] tracking-wider">领域</label>
                 <select
                   value={selectedCategory}
                   onChange={(e) => setSelectedCategory(e.target.value)}
                   className="bread-input w-auto min-w-[120px] text-xs"
                 >
-                  <option value="">{isGuest ? 'All Categories' : `Default (${majorCategory})`}</option>
+                  <option value="">{isGuest ? '全部领域' : `默认 (${majorCategory})`}</option>
                   {MAJOR_CATEGORIES.map(category => (
                     <option key={category} value={category}>
                       {category}
@@ -250,13 +250,13 @@ export default function ArticlesPage() {
               </div>
               
               <div className="flex items-center gap-2">
-                <label className="text-xs text-[var(--bread-text-secondary)] tracking-wider uppercase">Date</label>
+                <label className="text-xs text-[var(--bread-text-secondary)] tracking-wider">日期</label>
                 <select
                   value={selectedDate}
                   onChange={(e) => setSelectedDate(e.target.value)}
                   className="bread-input w-auto min-w-[150px] text-xs"
                 >
-                  <option value="">All Dates</option>
+                  <option value="">全部日期</option>
                   {availableDates.map(date => (
                     <option key={date} value={date}>
                       {formatDateForSelect(date)}
@@ -273,10 +273,10 @@ export default function ArticlesPage() {
           {filteredArticles.length === 0 ? (
             <div className="bread-card p-16 text-center">
               <h3 className="font-display text-xl font-bold text-[var(--bread-text)] mb-2">
-                No Articles Found
+                暂无文章
               </h3>
               <p className="text-[var(--bread-text-secondary)] text-sm">
-                {selectedDate ? 'No articles available for this date' : 'No articles available in this category'}
+                {selectedDate ? '该日期暂无文章' : '该领域暂无文章'}
               </p>
             </div>
           ) : (
@@ -287,7 +287,7 @@ export default function ArticlesPage() {
                   href={`/articles/${article.id}`}
                   className="group block"
                 >
-                  <div className="bread-card p-6 transition-all group-hover:border-[var(--bread-accent)]">
+                  <div className="bread-card p-6 border-l-4 border-l-transparent group-hover:border-l-[var(--bread-primary)] transition-all">
                     <div className="flex items-start gap-4">
                       <div className="flex-shrink-0 w-10 text-right">
                         <span className="font-display text-lg font-bold text-[var(--bread-border)]">
@@ -297,7 +297,7 @@ export default function ArticlesPage() {
                       
                       <div className="flex-1 min-w-0">
                         <h3 className="font-display text-lg font-bold text-[var(--bread-text)] group-hover:text-[var(--bread-accent)] transition mb-2 line-clamp-2">
-                          {article.title_en || 'Untitled'}
+                          {article.title_en || '无标题'}
                         </h3>
                         
                         {article.title_zh && (
@@ -308,7 +308,7 @@ export default function ArticlesPage() {
                         
                         <div className="flex flex-wrap items-center gap-4 text-xs text-[var(--bread-text-secondary)]">
                           {article.source_name && (
-                            <span>{article.source_name}</span>
+                            <span className="border-l border-[var(--bread-border)] pl-3">{article.source_name}</span>
                           )}
                           
                           {article.source_published_at && (
@@ -336,7 +336,7 @@ export default function ArticlesPage() {
         <div className="max-w-5xl mx-auto px-6 py-8">
           <div className="newspaper-divider">
             <p className="text-center text-[var(--bread-text-secondary)] text-xs font-body tracking-wider">
-              2026 WordBread. All rights reserved.
+              2026 单词面包 WordBread. 保留所有权利。
             </p>
           </div>
         </div>
