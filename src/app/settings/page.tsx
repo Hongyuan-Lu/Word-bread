@@ -204,7 +204,7 @@ export default function SettingsPage() {
                 </div>
               </div>
             </div>
-            <button onClick={handleSignOut} disabled={saving} className="w-full px-4 py-3 bg-red-50 hover:bg-red-100 text-red-600 text-sm font-medium rounded border border-red-200 transition">
+            <button onClick={handleSignOut} disabled={saving} className="w-full px-4 py-3 bread-button-secondary text-sm">
               退出登录
             </button>
           </div>
