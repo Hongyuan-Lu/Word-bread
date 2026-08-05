@@ -135,7 +135,7 @@ export default function SettingsPage() {
 
       <main className="max-w-5xl mx-auto px-6 py-10">
         {message && (
-          <div className={`mb-6 p-4 text-sm ${message.type === 'success' ? 'bg-green-50 text-green-800 border border-green-200' : message.type === 'error' ? 'bg-red-50 text-red-800 border border-red-200' : 'bg-blue-50 text-blue-800 border border-blue-200'}`}>
+          <div className={`mb-6 p-4 text-sm ${message.type === 'success' ? 'bg-[var(--bread-warm)] text-[var(--bread-accent)] border border-[var(--bread-secondary)]' : message.type === 'error' ? 'bg-red-50 text-red-800 border border-red-200' : 'bg-[var(--bread-warm)] text-[var(--bread-text)] border border-[var(--bread-border)]'}`}>
             {message.text}
           </div>
         )}
