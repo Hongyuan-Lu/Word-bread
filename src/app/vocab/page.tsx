@@ -369,7 +369,7 @@ export default function VocabPage() {
                             改为学习
                           </button>
                         )}
-                        <button onClick={() => handleDelete(word.lemma)} className="px-3 py-2 bg-[var(--bread-highlight)] hover:bg-red-50 text-red-600 text-xs font-medium rounded border border-red-300 transition">
+                        <button onClick={() => handleDelete(word.lemma)} className="px-3 py-2 bg-[var(--bread-highlight)] hover:bg-[var(--bread-border)] text-[var(--bread-text)] text-xs font-medium rounded border border-[var(--bread-border)] transition">
                           已熟悉
                         </button>
                       </div>
