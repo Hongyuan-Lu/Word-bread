@@ -561,14 +561,13 @@ export default function ArticleReadPage() {
               
               {article.source_name && (
                 <p className="text-[var(--bread-text-secondary)] flex items-center gap-2">
-                  <span>📰</span>
-                  <span>来源: {article.source_name}</span>
+                  <span>新闻来源: {article.source_name}</span>
                 </p>
               )}
               
               {article.source_published_at && (
                 <p className="text-[var(--bread-text-secondary)] flex items-center gap-2">
-                  <span>📅</span>
+                  
                   <span>发布时间: {formatDate(article.source_published_at)}</span>
                 </p>
               )}
@@ -581,14 +580,14 @@ export default function ArticleReadPage() {
                     rel="noopener noreferrer"
                     className="text-sm text-bread-primary hover:underline flex items-center gap-1"
                   >
-                    <span>🔗</span>
+                    
                     <span>原文链接 ↗</span>
                   </a>
                 )}
                 
                 {article.subject_category && (
-                  <span className="bread-tag bread-tag-secondary">
-                    🎯 领域: {article.subject_category}
+                  <span className="bread-tag bread-tag-primary">
+                    领域: {article.subject_category}
                   </span>
                 )}
               </div>
@@ -626,7 +625,7 @@ export default function ArticleReadPage() {
                 className="flex items-center gap-2 text-bread-primary hover:text-bread-accent font-medium mb-4"
               >
                 <span>{showTranslation ? '▼' : '▶'}</span>
-                <span>📖 查看中文译文</span>
+                <span>查看中文译文</span>
               </button>
               {showTranslation && (
                 <div className="p-4 bg-white rounded-xl border border-[var(--bread-border)]">
@@ -652,7 +651,7 @@ export default function ArticleReadPage() {
                     : 'bread-button-primary text-xs'
                 }`}
               >
-                {isRead ? '✅ 已完成阅读（再次点击取消）' : '📖 标记为已完成阅读'}
+                {isRead ? '已完成阅读（再次点击取消）' : '标记为已完成阅读'}
               </button>
             )}
 
@@ -681,7 +680,7 @@ export default function ArticleReadPage() {
                     href={`/articles/${articleList[currentArticleIndex + 1].id}`}
                     className="flex-1 py-3 px-4 bread-button-secondary text-center text-xs"
                   >
-                    下一篇 →
+                    下一篇
                   </a>
                 ) : (
                   <div className="flex-1 py-3 px-4 bg-[var(--bread-highlight)] text-[var(--bread-text-secondary)] text-center rounded-xl font-medium cursor-default">
@@ -692,10 +691,11 @@ export default function ArticleReadPage() {
             )}
           </div>
         </section>
+      </main>
 
         {/* 阅读说明 */}
         <section className="bread-card p-6">
-          <h4 className="font-display font-bold text-[var(--bread-text)] mb-4">阅读说明</h4>
+          <h4 className="font-display font-bold text-[var(--bread-text)] mb-4">单词划分说明</h4>
           <ul className="space-y-2 text-sm text-[var(--bread-text-secondary)]">
             <li className="flex items-center gap-2">
               <span className="w-4 h-4 bg-[var(--bread-highlight)] rounded"></span>
@@ -706,12 +706,12 @@ export default function ArticleReadPage() {
               <span><strong>高亮加粗</strong>：Level 1，当前学习目标重点词</span>
             </li>
             <li className="flex items-center gap-2">
-              <span className="w-4 h-4 bg-gray-400 rounded"></span>
+              <span className="w-4 h-4 bg-[var(--bread-text-secondary)] rounded"></span>
               <span><strong>灰色文字</strong>：Level 2，超纲词，点击可查看释义</span>
             </li>
           </ul>
         </section>
-      </main>
+
 
       {/* 报纸风格底部 */}
       <footer className="border-t border-[var(--bread-text)] bg-white mt-12">
