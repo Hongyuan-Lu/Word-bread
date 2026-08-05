@@ -70,11 +70,11 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-[var(--bread-background)]">
-      {/* 报纸风格头部 */}
+      {/* 头部 */}
       <header className="bread-navbar">
         <div className="max-w-5xl mx-auto px-6 py-4">
           {/* 顶部日期 */}
-          <div className="flex items-center justify-between mb-4 pb-4 border-b border-[var(--bread-text)]">
+          <div className="flex items-center justify-between mb-4 pb-3 border-b border-[var(--bread-border)]">
             <div className="text-xs text-[var(--bread-text-secondary)] font-body tracking-wider">
               {new Date().toLocaleDateString('zh-CN', { 
                 year: 'numeric', 
@@ -84,7 +84,7 @@ export default function HomePage() {
               })}
             </div>
             <div className="text-xs text-[var(--bread-text-secondary)] font-body tracking-wider">
-              每日精选
+              每日精选英文新闻
             </div>
           </div>
           
@@ -93,15 +93,13 @@ export default function HomePage() {
             <h1 className="font-display text-5xl md:text-6xl font-bold text-[var(--bread-text)] mb-3 tracking-tight">
               单词面包
             </h1>
-            <div className="newspaper-divider">
-              <p className="text-sm text-[var(--bread-text-secondary)] font-display italic tracking-wide">
-                面向 CET4/CET6 学习者的 AI 英语新闻阅读工具
-              </p>
-            </div>
+            <p className="text-sm text-[var(--bread-text-secondary)] font-display italic">
+              面向 CET4/CET6 学习者的 AI 英语新闻阅读工具
+            </p>
           </div>
           
           {/* 导航栏 */}
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between pt-3 border-t border-[var(--bread-border)]">
             <nav className="flex items-center gap-8">
               <a href="/" className="text-[var(--bread-text)] font-body text-sm font-medium tracking-wider hover:text-[var(--bread-accent)] transition">
                 首页
@@ -114,27 +112,17 @@ export default function HomePage() {
               </a>
             </nav>
             
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3">
               {isGuest ? (
                 <>
-                  <span className="bread-tag bread-tag-secondary">
-                    游客
-                  </span>
-                  <a href="/login" className="bread-button-primary text-xs">
-                    登录
-                  </a>
+                  <span className="bread-tag bread-tag-secondary">游客</span>
+                  <a href="/login" className="bread-button-primary text-xs">登录</a>
                 </>
               ) : (
                 <>
-                  <span className="bread-tag bread-tag-primary">
-                    {profile?.target_exam ?? 'CET4'}
-                  </span>
-                  <span className="bread-tag bread-tag-secondary">
-                    {profile?.major_category ?? '综合'}
-                  </span>
-                  <a href="/settings" className="text-[var(--bread-text-secondary)] hover:text-[var(--bread-text)] transition text-sm">
-                    设置
-                  </a>
+                  <span className="bread-tag bread-tag-primary">{profile?.target_exam ?? 'CET4'}</span>
+                  <span className="bread-tag bread-tag-primary">{profile?.major_category ?? '综合'}</span>
+                  <a href="/settings" className="text-[var(--bread-text-secondary)] hover:text-[var(--bread-text)] transition text-xs">设置</a>
                 </>
               )}
             </div>
@@ -159,12 +147,8 @@ export default function HomePage() {
                 </p>
                 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <a href="/login" className="bread-button-primary">
-                    立即登录
-                  </a>
-                  <a href="/articles" className="bread-button-secondary">
-                    浏览文章
-                  </a>
+                  <a href="/login" className="bread-button-primary">立即登录</a>
+                  <a href="/articles" className="bread-button-secondary">浏览文章</a>
                 </div>
               </div>
             </div>
@@ -182,139 +166,96 @@ export default function HomePage() {
           )}
         </section>
 
-        {/* 统计卡片 - 高亮背景 */}
+        {/* 统计卡片 */}
         <section className="bread-card-highlight p-8 mb-16">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
               <div className="step-number mx-auto mb-3">1</div>
-              <div className="font-display text-2xl font-bold text-[var(--bread-text)] mb-1">
+              <div className="text-2xl font-bold text-[var(--bread-text)] mb-1" style={{ fontFamily: 'Arial, sans-serif' }}>
                 {isGuest ? '游客' : (profile?.target_exam === 'CET4' ? 'CET-4' : 'CET-6')}
               </div>
-              <div className="text-xs text-[var(--bread-text-secondary)] tracking-wider">
-                学习目标
-              </div>
+              <div className="text-xs text-[var(--bread-text-secondary)] tracking-wider">学习目标</div>
             </div>
             
             <div className="text-center border-x border-[var(--bread-border)] px-8">
               <div className="step-number mx-auto mb-3">2</div>
-              <div className="font-display text-2xl font-bold text-[var(--bread-text)] mb-1">
+              <div className="text-2xl font-bold text-[var(--bread-text)] mb-1" style={{ fontFamily: 'Arial, sans-serif' }}>
                 {isGuest ? '全部' : (profile?.major_category || '综合')}
               </div>
-              <div className="text-xs text-[var(--bread-text-secondary)] tracking-wider">
-                专业领域
-              </div>
+              <div className="text-xs text-[var(--bread-text-secondary)] tracking-wider">专业领域</div>
             </div>
             
             <div className="text-center">
               <div className="step-number mx-auto mb-3">3</div>
-              <div className="font-display text-2xl font-bold text-[var(--bread-text)] mb-1">
+              <div className="text-2xl font-bold text-[var(--bread-text)] mb-1" style={{ fontFamily: 'Arial, sans-serif' }}>
                 {isGuest ? '-' : readCount}
               </div>
-              <div className="text-xs text-[var(--bread-text-secondary)] tracking-wider">
-                已阅读文章
-              </div>
+              <div className="text-xs text-[var(--bread-text-secondary)] tracking-wider">已阅读文章</div>
             </div>
           </div>
         </section>
 
         {/* 功能入口 */}
         <section className="mb-16">
-          <div className="newspaper-divider">
-            <h2 className="font-display text-2xl font-bold text-[var(--bread-text)] text-center">
-              开始学习
-            </h2>
-          </div>
+          <h2 className="font-display text-2xl font-bold text-[var(--bread-text)] mb-8">开始学习</h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <a href="/articles" className="group block">
               <div className="bread-card p-8 h-full border-l-4 border-l-transparent group-hover:border-l-[var(--bread-primary)] transition-all">
                 <div className="text-xs text-[var(--bread-accent)] tracking-widest mb-3">文章</div>
-                <h3 className="font-display text-xl font-bold text-[var(--bread-text)] mb-3">
-                  阅读英文新闻
-                </h3>
+                <h3 className="font-display text-xl font-bold text-[var(--bread-text)] mb-3">阅读英文新闻</h3>
                 <p className="text-[var(--bread-text-secondary)] font-body text-sm leading-relaxed">
                   浏览适合您 CET 水平的英文新闻，点击高亮词汇在语境中学习。
                 </p>
+                <div className="mt-4 text-[var(--bread-accent)] text-sm">
+                  浏览文章 →
+                </div>
               </div>
             </a>
             
             <a href="/vocab" className="group block">
               <div className="bread-card p-8 h-full border-l-4 border-l-transparent group-hover:border-l-[var(--bread-primary)] transition-all">
                 <div className="text-xs text-[var(--bread-accent)] tracking-widest mb-3">词汇</div>
-                <h3 className="font-display text-xl font-bold text-[var(--bread-text)] mb-3">
-                  管理单词本
-                </h3>
+                <h3 className="font-display text-xl font-bold text-[var(--bread-text)] mb-3">管理单词本</h3>
                 <p className="text-[var(--bread-text-secondary)] font-body text-sm leading-relaxed">
                   复习您在阅读中保存的单词，巩固记忆，追踪学习进度。
                 </p>
+                <div className="mt-4 text-[var(--bread-accent)] text-sm">
+                  查看单词本 →
+                </div>
               </div>
             </a>
           </div>
         </section>
-
-        {/* 使用方法 - 三栏布局 */}
-        <section className="mb-16">
-          <div className="newspaper-divider">
-            <h2 className="font-display text-2xl font-bold text-[var(--bread-text)] text-center">
-              使用方法
-            </h2>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-            <div className="bread-card p-6 border-t-4 border-t-[var(--bread-primary)]">
-              <div className="font-display text-3xl font-bold text-[var(--bread-primary)] mb-4">01</div>
-              <h4 className="font-display font-bold text-[var(--bread-text)] mb-2">每日阅读</h4>
-              <p className="text-[var(--bread-text-secondary)] text-sm leading-relaxed">
-                每天花 10-15 分钟阅读一篇 AI 改写的英文新闻
-              </p>
-            </div>
-            
-            <div className="bread-card p-6 border-t-4 border-t-[var(--bread-primary)]">
-              <div className="font-display text-3xl font-bold text-[var(--bread-primary)] mb-4">02</div>
-              <h4 className="font-display font-bold text-[var(--bread-text)] mb-2">保存生词</h4>
-              <p className="text-[var(--bread-text-secondary)] text-sm leading-relaxed">
-                遇到不认识的单词，点击查看释义并添加到单词本
-              </p>
-            </div>
-            
-            <div className="bread-card p-6 border-t-4 border-t-[var(--bread-primary)]">
-              <div className="font-display text-3xl font-bold text-[var(--bread-primary)] mb-4">03</div>
-              <h4 className="font-display font-bold text-[var(--bread-text)] mb-2">定期复习</h4>
-              <p className="text-[var(--bread-text-secondary)] text-sm leading-relaxed">
-                在单词本中复习已保存的词汇，巩固记忆
-              </p>
-            </div>
-          </div>
-        </section>
       </main>
 
-      {/* 报纸风格底部 */}
-      <footer className="border-t border-[var(--bread-text)] bg-white">
-        <div className="max-w-5xl mx-auto px-6 py-10">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+      {/* 底部 */}
+      <footer className="border-t border-[var(--bread-border)] bg-white">
+        <div className="max-w-5xl mx-auto px-6 py-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
-              <h4 className="font-display font-bold text-[var(--bread-text)] mb-3 text-sm">关于单词面包</h4>
-              <p className="text-[var(--bread-text-secondary)] text-xs leading-relaxed">
-                面向 CET4/CET6 学习者的 AI 英语新闻阅读工具。
-              </p>
-            </div>
-            <div>
-              <h4 className="font-display font-bold text-[var(--bread-text)] mb-3 text-sm">导航</h4>
-              <ul className="space-y-2 text-xs">
-                <li><a href="/articles" className="text-[var(--bread-text-secondary)] hover:text-[var(--bread-accent)] transition">文章列表</a></li>
-                <li><a href="/vocab" className="text-[var(--bread-text-secondary)] hover:text-[var(--bread-accent)] transition">我的单词</a></li>
-                <li><a href="/settings" className="text-[var(--bread-text-secondary)] hover:text-[var(--bread-accent)] transition">设置</a></li>
+              <h4 className="font-display font-bold text-[var(--bread-text)] mb-3 text-sm">使用方法</h4>
+              <ul className="space-y-2 text-xs text-[var(--bread-text-secondary)]">
+                <li>每日阅读一篇文章，约 10-15 分钟</li>
+                <li>点击高亮词汇查看释义并保存</li>
+                <li>在单词本中复习已保存的词汇</li>
               </ul>
             </div>
             <div>
+              <h4 className="font-display font-bold text-[var(--bread-text)] mb-3 text-sm">导航</h4>
+              <div className="flex gap-4 text-xs">
+                <a href="/articles" className="text-[var(--bread-text-secondary)] hover:text-[var(--bread-accent)] transition">文章列表</a>
+                <a href="/vocab" className="text-[var(--bread-text-secondary)] hover:text-[var(--bread-accent)] transition">我的单词</a>
+                <a href="/settings" className="text-[var(--bread-text-secondary)] hover:text-[var(--bread-accent)] transition">设置</a>
+              </div>
+            </div>
+            <div>
               <h4 className="font-display font-bold text-[var(--bread-text)] mb-3 text-sm">联系我们</h4>
-              <p className="text-[var(--bread-text-secondary)] text-xs">
-                hongyuanlu9@gmail.com
-              </p>
+              <p className="text-[var(--bread-text-secondary)] text-xs">hongyuanlu9@gmail.com</p>
             </div>
           </div>
-          <div className="newspaper-divider">
-            <p className="text-center text-[var(--bread-text-secondary)] text-xs font-body tracking-wider">
+          <div className="mt-8 pt-4 border-t border-[var(--bread-border)]">
+            <p className="text-center text-[var(--bread-text-secondary)] text-xs">
               2026 单词面包 WordBread. 保留所有权利。
             </p>
           </div>
