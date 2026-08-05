@@ -280,13 +280,13 @@ export function ArticleReader({
             <div className="space-y-2 mb-4">
               {!isGuest && selectedToken.lemma && (
                 <div className="flex items-center gap-2">
-                  <span className="text-sm text-gray-600">单词本:</span>
+                  <span className="text-sm text-gray-600">Vocabulary:</span>
                   {getVocabType(selectedToken.lemma) ? (
                     <span className={`bread-tag text-xs ${vocabTypeColors[getVocabType(selectedToken.lemma)!]}`}>
                       {vocabTypeLabels[getVocabType(selectedToken.lemma)!]}
                     </span>
                   ) : (
-                    <span className="text-sm text-gray-400">未加入</span>
+                    <span className="text-sm text-gray-400">Not added</span>
                   )}
                 </div>
               )}
@@ -294,14 +294,14 @@ export function ArticleReader({
 
             {isWordInDictionary(selectedToken) && (
               <div className="mb-4 p-3 bg-blue-50 rounded-xl border border-blue-100">
-                <div className="text-xs text-blue-600 font-medium mb-1">📖 词典释义</div>
+                <div className="text-xs text-blue-600 font-medium mb-1">Dictionary</div>
                 <div className="text-sm text-gray-800">{getCnGloss(selectedToken)}</div>
               </div>
             )}
 
             {!isWordInDictionary(selectedToken) && selectedToken.short_explanation && (
               <div className="mb-4 p-3 bg-green-50 rounded-xl border border-green-100">
-                <div className="text-xs text-green-600 font-medium mb-1">📝 文中释义</div>
+                <div className="text-xs text-green-600 font-medium mb-1">Context</div>
                 <div className="text-sm text-gray-800">{selectedToken.short_explanation}</div>
               </div>
             )}
@@ -310,7 +310,7 @@ export function ArticleReader({
               {!isGuest ? (
                 selectedToken.lemma && getVocabType(selectedToken.lemma) ? (
                   <div className="w-full px-4 py-3 bg-gray-100 text-gray-500 text-sm font-medium rounded-xl text-center">
-                    ✅ 已添加至单词本
+                    Added to vocabulary
                   </div>
                 ) : (
                   <div className="flex gap-2">
@@ -318,13 +318,13 @@ export function ArticleReader({
                       onClick={() => selectedToken.lemma && handleAddToStudyPlan(selectedToken.lemma)}
                       className="flex-1 px-3 py-2 bg-green-100 hover:bg-green-200 text-green-700 text-sm font-medium rounded-xl transition"
                     >
-                      + 学习计划
+                      Study Plan
                     </button>
                     <button
                       onClick={() => selectedToken.lemma && handleMarkDifficult(selectedToken.lemma)}
                       className="flex-1 px-3 py-2 bg-purple-100 hover:bg-purple-200 text-purple-700 text-sm font-medium rounded-xl transition"
                     >
-                      + 较难单词
+                      Difficult
                     </button>
                   </div>
                 )

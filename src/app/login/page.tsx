@@ -36,17 +36,17 @@ export default function LoginPage() {
     try {
       if (isSignUp) {
         if (!nickname.trim()) {
-          throw new Error('请输入昵称');
+          throw new Error('Please enter a nickname');
         }
         if (!isEmail(account)) {
-          throw new Error('请输入有效的邮箱地址');
+          throw new Error('Please enter a valid email address');
         }
 
         const { data: existingEmail } = await supabase.rpc('get_email_by_nickname', {
           p_nickname: nickname.trim(),
         });
         if (existingEmail) {
-          throw new Error('该昵称已被使用，请选择其他昵称');
+          throw new Error('This nickname is already taken');
         }
 
         const { error } = await supabase.auth.signUp({
@@ -63,7 +63,7 @@ export default function LoginPage() {
 
         setMessage({
           type: 'success',
-          text: '注册成功！请查收验证邮件，验证后即可登录。',
+          text: 'Registration successful. Please check your email to verify your account.',
         });
       } else {
         let loginEmail = account;
@@ -71,7 +71,7 @@ export default function LoginPage() {
         if (!isEmail(account)) {
           const emailFromNickname = await handleNicknameCheck(account.trim());
           if (!emailFromNickname) {
-            throw new Error('该昵称不存在，请检查后重试');
+            throw new Error('Nickname not found');
           }
           loginEmail = emailFromNickname;
         }
@@ -86,7 +86,7 @@ export default function LoginPage() {
     } catch (error) {
       setMessage({
         type: 'error',
-        text: error instanceof Error ? error.message : '操作失败，请重试',
+        text: error instanceof Error ? error.message : 'Operation failed',
       });
     } finally {
       setLoading(false);
@@ -94,26 +94,26 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-bread-background flex items-center justify-center px-4 py-8">
+    <div className="min-h-screen bg-[var(--bread-background)] flex items-center justify-center px-4 py-8">
       <div className="w-full max-w-md">
-        {/* 报纸风格头部 */}
-        <div className="text-center mb-8">
-          <div className="newspaper-divider mb-6">
+        {/* 标题 */}
+        <div className="text-center mb-10">
+          <div className="newspaper-divider mb-8">
             <a href="/" className="inline-block">
-              <h1 className="font-display text-5xl font-bold text-gray-900 mb-2">单词面包</h1>
-              <p className="text-bread-primary font-display italic">WordBread · 将新闻烘焙成知识</p>
+              <h1 className="font-display text-4xl font-bold text-[var(--bread-text)] mb-2">WordBread</h1>
+              <p className="text-xs text-[var(--bread-text-secondary)] font-display italic tracking-wider">AI-Powered English Reading</p>
             </a>
           </div>
           
-          <h2 className="font-display text-3xl font-bold text-gray-900 mb-2">
-            {isSignUp ? '创建账户' : '欢迎回来'}
+          <h2 className="font-display text-2xl font-bold text-[var(--bread-text)] mb-2">
+            {isSignUp ? 'Create Account' : 'Welcome Back'}
           </h2>
-          <p className="text-gray-600 font-body">
-            {isSignUp ? '开始您的英语学习之旅' : '继续您的学习之旅'}
+          <p className="text-sm text-[var(--bread-text-secondary)]">
+            {isSignUp ? 'Start your learning journey' : 'Continue your learning journey'}
           </p>
           {!isSignUp && (
-            <p className="text-sm text-gray-500 mt-2">
-              支持邮箱或昵称登录
+            <p className="text-xs text-[var(--bread-text-secondary)] mt-2">
+              Sign in with email or nickname
             </p>
           )}
         </div>
@@ -121,7 +121,7 @@ export default function LoginPage() {
         {/* 消息提示 */}
         {message && (
           <div
-            className={`mb-6 p-4 rounded-xl text-sm ${
+            className={`mb-6 p-4 text-sm ${
               message.type === 'success'
                 ? 'bg-green-50 text-green-800 border border-green-200'
                 : message.type === 'error'
@@ -129,12 +129,7 @@ export default function LoginPage() {
                 : 'bg-blue-50 text-blue-800 border border-blue-200'
             }`}
           >
-            <div className="flex items-center gap-2">
-              <span className="text-lg">
-                {message.type === 'success' ? '✅' : message.type === 'error' ? '❌' : '⚠️'}
-              </span>
-              <span>{message.text}</span>
-            </div>
+            {message.text}
           </div>
         )}
 
@@ -142,20 +137,20 @@ export default function LoginPage() {
         <div className="bread-card p-6 mb-6">
           <a
             href="/"
-            className="bread-button-secondary w-full text-center block"
+            className="bread-button-secondary w-full text-center block text-xs"
           >
-            以游客身份继续浏览
+            Continue as Guest
           </a>
-          <p className="text-xs text-gray-500 text-center mt-3">
-            游客模式可浏览文章，但学习进度不会保存
+          <p className="text-xs text-[var(--bread-text-secondary)] text-center mt-3">
+            Guest mode allows browsing without saving progress
           </p>
         </div>
 
         {/* 分隔线 */}
         <div className="flex items-center gap-4 mb-6">
-          <div className="flex-1 border-t border-gray-300"></div>
-          <span className="text-sm text-gray-500 font-body">或</span>
-          <div className="flex-1 border-t border-gray-300"></div>
+          <div className="flex-1 border-t border-[var(--bread-border)]"></div>
+          <span className="text-xs text-[var(--bread-text-secondary)] tracking-wider uppercase">or</span>
+          <div className="flex-1 border-t border-[var(--bread-border)]"></div>
         </div>
 
         {/* 登录表单 */}
@@ -164,8 +159,8 @@ export default function LoginPage() {
             {/* 昵称输入（仅注册时） */}
             {isSignUp && (
               <div>
-                <label htmlFor="nickname" className="block text-sm font-medium text-gray-700 mb-2">
-                  👤 昵称
+                <label htmlFor="nickname" className="block text-xs font-medium text-[var(--bread-text)] mb-2 tracking-wider uppercase">
+                  Nickname
                 </label>
                 <input
                   id="nickname"
@@ -175,17 +170,14 @@ export default function LoginPage() {
                   required
                   disabled={loading}
                   className="bread-input"
-                  placeholder="您的学习昵称"
+                  placeholder="Your display name"
                 />
-                <p className="text-xs text-gray-500 mt-1">
-                  昵称将作为您的身份标识之一，请选择有意义的名称
-                </p>
               </div>
             )}
 
             <div>
-              <label htmlFor="account" className="block text-sm font-medium text-gray-700 mb-2">
-                📧 邮箱地址{!isSignUp && ' 或昵称'}
+              <label htmlFor="account" className="block text-xs font-medium text-[var(--bread-text)] mb-2 tracking-wider uppercase">
+                {!isSignUp ? 'Email or Nickname' : 'Email'}
               </label>
               <input
                 id="account"
@@ -195,18 +187,13 @@ export default function LoginPage() {
                 required
                 disabled={loading}
                 className="bread-input"
-                placeholder={isSignUp ? "your@email.com" : "your@email.com 或 nickname"}
+                placeholder={isSignUp ? "your@email.com" : "your@email.com or nickname"}
               />
-              {!isSignUp && (
-                <p className="text-xs text-gray-500 mt-1">
-                  可输入邮箱或昵称登录
-                </p>
-              )}
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
-                🔒 密码
+              <label htmlFor="password" className="block text-xs font-medium text-[var(--bread-text)] mb-2 tracking-wider uppercase">
+                Password
               </label>
               <div className="relative">
                 <input
@@ -217,38 +204,26 @@ export default function LoginPage() {
                   required
                   minLength={6}
                   disabled={loading}
-                  className="bread-input pr-12"
-                  placeholder="请输入密码"
+                  className="bread-input pr-16"
+                  placeholder="Min 6 characters"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-500 transition"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-[var(--bread-text-secondary)] hover:text-[var(--bread-text)] transition"
                   tabIndex={-1}
                 >
-                  {showPassword ? '隐藏' : '显示'}
+                  {showPassword ? 'Hide' : 'Show'}
                 </button>
               </div>
-              {isSignUp && (
-                <p className="text-xs text-gray-500 mt-1">
-                  密码至少6位字符
-                </p>
-              )}
             </div>
 
             <button
               type="submit"
               disabled={loading}
-              className="bread-button-primary w-full flex items-center justify-center gap-2"
+              className="bread-button-primary w-full text-xs"
             >
-              {loading ? (
-                <>
-                  <span className="animate-spin">⏳</span>
-                  <span>处理中...</span>
-                </>
-              ) : (
-                <span>{isSignUp ? '📝 注册' : '🚀 登录'}</span>
-              )}
+              {loading ? 'Processing...' : (isSignUp ? 'Create Account' : 'Sign In')}
             </button>
           </form>
 
@@ -261,15 +236,15 @@ export default function LoginPage() {
                 setMessage(null);
               }}
               disabled={loading}
-              className="text-bread-primary hover:text-bread-accent text-sm font-medium disabled:opacity-50 transition"
+              className="text-[var(--bread-accent)] hover:text-[var(--bread-text)] text-xs disabled:opacity-50 transition"
             >
               {isSignUp ? (
                 <>
-                  已有账户？<span className="underline">立即登录</span>
+                  Already have an account? <span className="underline">Sign in</span>
                 </>
               ) : (
                 <>
-                  没有账户？<span className="underline">立即注册</span>
+                  Don't have an account? <span className="underline">Create one</span>
                 </>
               )}
             </button>
@@ -277,12 +252,12 @@ export default function LoginPage() {
         </div>
 
         {/* 底部提示 */}
-        <div className="mt-6 text-center text-sm text-gray-600">
+        <div className="mt-8 text-center text-xs text-[var(--bread-text-secondary)]">
           <p>
-            登录即表示您同意我们的
-            <a href="#" className="text-bread-primary hover:underline ml-1">服务条款</a>
-            和
-            <a href="#" className="text-bread-primary hover:underline ml-1">隐私政策</a>
+            By signing in, you agree to our
+            <a href="#" className="text-[var(--bread-accent)] hover:underline ml-1">Terms</a>
+            {' '}and{' '}
+            <a href="#" className="text-[var(--bread-accent)] hover:underline">Privacy Policy</a>
           </p>
         </div>
       </div>
