@@ -159,13 +159,6 @@ export default function VocabPage() {
     return null;
   };
 
-  const getExamLevel = (word: WordState): string => {
-    if (word.word_id && wordExamLevels.has(word.word_id)) {
-      return wordExamLevels.get(word.word_id)!;
-    }
-    return 'out_of_syllabus';
-  };
-
   const filteredWords = wordStates.filter(w => {
     // vocab_type 筛选
     if (filter !== 'all' && w.vocab_type !== filter) return false;
