@@ -1,0 +1,35 @@
+﻿{
+    "name":  "wordbread",
+    "version":  "0.1.0",
+    "private":  false,
+    "scripts":  {
+                    "dev":  "next dev",
+                    "build":  "next build",
+                    "start":  "next start",
+                    "lint":  "eslint"
+                },
+    "dependencies":  {
+                         "@langchain/core":  "^1.1.42",
+                         "@langchain/openai":  "^1.4.5",
+                         "@supabase/ssr":  "^0.10.2",
+                         "@supabase/supabase-js":  "^2.104.1",
+                         "dotenv":  "^17.4.2",
+                         "iconv-lite":  "^0.7.2",
+                         "next":  "16.2.4",
+                         "react":  "19.2.4",
+                         "react-dom":  "19.2.4",
+                         "rss-parser":  "^3.13.0",
+                         "zod":  "^4.3.6"
+                     },
+    "devDependencies":  {
+                            "@tailwindcss/postcss":  "^4",
+                            "@types/node":  "^20",
+                            "@types/react":  "^19",
+                            "@types/react-dom":  "^19",
+                            "eslint":  "^9",
+                            "eslint-config-next":  "16.2.4",
+                            "tailwindcss":  "^4",
+                            "tsx":  "^4.21.0",
+                            "typescript":  "^5"
+                        }
+}
