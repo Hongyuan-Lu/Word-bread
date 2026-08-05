@@ -291,11 +291,9 @@ export default function VocabPage() {
                           <span className={`bread-tag text-[0.65rem] ${word.vocab_type === 'study_plan' ? 'bread-tag-primary' : 'bread-tag-primary'}`}>
                             {word.vocab_type === 'study_plan' ? '学习计划' : '较难单词'}
                           </span>
-                          {examLevel && (
-                            <span className="bread-tag bread-tag-secondary text-[0.65rem]">
+                          <span className="bread-tag bread-tag-secondary text-[0.65rem]">
                               {examLevel === 'common' ? '常见词' : examLevel === 'CET4' ? 'CET 4' : examLevel === 'CET6' ? 'CET 6' : '超纲词'}
                             </span>
-                          )}
                         </div>
                         
                         {hasGloss && (
