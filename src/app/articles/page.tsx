@@ -206,7 +206,7 @@ export default function ArticlesPage() {
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
             <div>
               <h2 className="font-display text-xl font-bold text-[var(--bread-text)] mb-1">
-                {getEffectiveCategory()} <strong>文章</strong>
+                <strong>{getEffectiveCategory()}</strong> 文章
               </h2>
               <p className="text-[var(--bread-text-secondary)] text-xs">
                 为 {currentTargetExam} 水平改写的新闻文章
