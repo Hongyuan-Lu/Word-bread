@@ -187,12 +187,12 @@ export function ArticleReader({
 
   const vocabTypeLabels: Record<VocabType, string> = {
     study_plan: '学习计划',
-    较难单词: 'difficult',
+    difficult: 'difficult',
   };
 
   const vocabTypeColors: Record<VocabType, string> = {
     study_plan: 'bread-tag-primary',
-    较难单词: 'bread-tag-secondary',
+    difficult: 'bread-tag-secondary',
   };
 
   return (
