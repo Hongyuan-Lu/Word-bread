@@ -59,7 +59,7 @@ export default function HomePage() {
             <div className="text-xs text-[var(--bread-text-secondary)] font-body tracking-wider">每日精选英文新闻</div>
           </div>
           <div className="text-center mb-3">
-            <h1 className="font-display text-5xl md:text-6xl font-bold text-[var(--bread-text)] mb-2 tracking-tight">单词面包</h1>
+            <h1 className="font-display text-4xl md:text-5xl font-bold text-[var(--bread-text)] mb-3 tracking-tight">单词面包</h1>
             <p className="text-sm text-[var(--bread-text-secondary)] font-display italic">面向 CET 4 / CET 6 学习者的 AI 英语新闻阅读工具</p>
           </div>
           <div className="flex items-center justify-between pt-3 border-t border-[var(--bread-border)]">
