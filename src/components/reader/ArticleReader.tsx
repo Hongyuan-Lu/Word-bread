@@ -208,8 +208,7 @@ export function ArticleReader({
 
       {/* 文章内容 */}
       <div className="max-w-3xl mx-auto">
-        <div className="bread-card p-8 md:p-12">
-          <div className="prose prose-lg max-w-none font-body leading-relaxed">
+          <div className="prose prose-lg max-w-none font-body leading-relaxed text-center">
             {tokens.map((token, index) => {
               if (token.token_type === 'word' && token.lemma) {
                 const enriched = token as EnrichedToken;
@@ -239,7 +238,6 @@ export function ArticleReader({
                 />
               );
             })}
-          </div>
         </div>
       </div>
 

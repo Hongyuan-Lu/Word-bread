@@ -64,7 +64,7 @@ export function WordToken({
     return (
       <span
         onClick={handleClick}
-        className={`${baseClass} text-gray-500 ${
+        className={`${baseClass} text-gray-400 ${
           isSelected
             ? 'bg-bread-primary/20 ring-2 ring-bread-primary'
             : 'hover:bg-gray-100'

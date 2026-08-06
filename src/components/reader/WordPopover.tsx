@@ -98,7 +98,7 @@ export function WordPopover({
             <span className={`bread-tag text-xs ${
               displayLevel === 0 ? 'bread-tag-secondary' :
               displayLevel === 1 ? 'bread-tag-primary' :
-              'bg-blue-100 text-blue-700'
+              'bg-[var(--bread-highlight)] text-[var(--bread-accent)]'
             }`}>
               Level {displayLevel}
               {displayLevel === 0 ? '（普通文本）' :
@@ -111,7 +111,7 @@ export function WordPopover({
         <div className="flex items-center gap-2">
           <span className="text-sm text-gray-600">掌握:</span>
           <span className={`bread-tag text-xs ${
-            masteryStatus === 'known' ? 'bg-green-100 text-green-700' :
+            masteryStatus === 'known' ? 'bg-[var(--bread-highlight)] text-[var(--bread-text-secondary)]' :
             masteryStatus === 'unknown' ? 'bg-yellow-100 text-yellow-700' :
             'bread-tag-secondary'
           }`}>

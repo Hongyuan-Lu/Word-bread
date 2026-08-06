@@ -35,7 +35,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* 词汇高亮系统 */
 .word-highlight {
-  background: linear-gradient(to bottom, transparent 60%, rgba(184, 149, 106, 0.25) 60%);
+  background: linear-gradient(to bottom, transparent 50%, rgba(184, 149, 106, 0.5) 50%);
   padding: 0 2px;
   font-weight: 500;
   cursor: pointer;
@@ -43,7 +43,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .word-highlight:hover {
-  background: linear-gradient(to bottom, transparent 60%, rgba(184, 149, 106, 0.4) 60%);
+  background: linear-gradient(to bottom, transparent 50%, rgba(184, 149, 106, 0.7) 50%);
 }
 
 /* 报纸风格分隔线 */
