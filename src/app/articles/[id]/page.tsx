@@ -468,7 +468,7 @@ export default function ArticleReadPage() {
                 <>
                   <span className="bread-tag bread-tag-primary">{userTargetExam}</span>
                   <span className="bread-tag bread-tag-primary">{majorCategory}</span>
-                  <a href="/settings" className="text-[var(--bread-text)] font-body text-base font-semibold tracking-wider">设置</a>
+                  <a href="/settings" className="text-[var(--bread-text-secondary)] hover:text-[var(--bread-text)] transition text-xs">设置</a>
                 </>
               )}
             </div>
@@ -496,7 +496,7 @@ export default function ArticleReadPage() {
                     className={`px-4 py-1.5 rounded-md text-xs font-medium transition ${
                       displayMode === 'CET4'
                         ? 'bg-[var(--bread-primary)] text-white'
-                        : 'text-[var(--bread-text-secondary)] hover:text-[var(--bread-text)]'
+                        : 'text-[var(--bread-text-secondary)]'
                     }`}
                   >
                     CET-4
@@ -537,7 +537,7 @@ export default function ArticleReadPage() {
                     href={article.source_url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-bread-primary hover:underline flex items-center gap-1"
+                    className="text-sm text-[var(--bread-accent)] flex items-center gap-1"
                   >
                     <span>原文链接 ↗</span>
                   </a>
@@ -580,7 +580,7 @@ export default function ArticleReadPage() {
             <div className="p-6 border-t border-[var(--bread-border)] bg-[var(--bread-highlight)]">
               <button
                 onClick={() => setShowTranslation(!showTranslation)}
-                className="flex items-center gap-2 text-bread-primary hover:text-bread-accent font-medium mb-4"
+                className="flex items-center gap-2 text-[var(--bread-accent)] font-medium mb-4"
               >
                 <span>{showTranslation ? '▼' : '▶'}</span>
                 <span> 查看中文译文</span>
