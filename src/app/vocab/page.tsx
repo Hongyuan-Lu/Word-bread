@@ -263,19 +263,19 @@ export default function VocabPage() {
 
       <main className="max-w-5xl mx-auto px-6 py-10">
         {/* 统计卡片 */}
-        <section className="bread-card-highlight p-8 mb-8">
-          <div className="grid grid-cols-3 gap-4 md:gap-8">
+        <section className="bread-card-highlight p-4 md:p-8 mb-8">
+          <div className="grid grid-cols-3 gap-2 md:gap-8">
             <div className="text-center">
-              <div className="text-3xl font-bold text-[var(--bread-text)] mb-1" style={{ fontFamily: 'Arial, sans-serif' }}>{wordStates.length}</div>
-              <div className="text-xs text-[var(--bread-text-secondary)] tracking-wider">总单词数</div>
-            </div>
-            <div className="text-center border-x border-[var(--bread-border)] px-8">
-              <div className="text-3xl font-bold text-[var(--bread-text)] mb-1" style={{ fontFamily: 'Arial, sans-serif' }}>{studyPlanCount}</div>
-              <div className="text-xs text-[var(--bread-text-secondary)] tracking-wider">学习计划</div>
+              <div className="text-2xl md:text-3xl font-bold text-[var(--bread-text)] mb-1" style={{ fontFamily: 'Arial, sans-serif' }}>{wordStates.length}</div>
+              <div className="text-xs text-[var(--bread-text-secondary)]">总单词数</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-[var(--bread-text)] mb-1" style={{ fontFamily: 'Arial, sans-serif' }}>{difficultCount}</div>
-              <div className="text-xs text-[var(--bread-text-secondary)] tracking-wider">较难单词</div>
+              <div className="text-2xl md:text-3xl font-bold text-[var(--bread-text)] mb-1" style={{ fontFamily: 'Arial, sans-serif' }}>{studyPlanCount}</div>
+              <div className="text-xs text-[var(--bread-text-secondary)]">学习计划</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl md:text-3xl font-bold text-[var(--bread-text)] mb-1" style={{ fontFamily: 'Arial, sans-serif' }}>{difficultCount}</div>
+              <div className="text-xs text-[var(--bread-text-secondary)]">较难单词</div>
             </div>
           </div>
         </section>
