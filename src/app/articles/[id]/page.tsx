@@ -441,69 +441,34 @@ export default function ArticleReadPage() {
     <div className="min-h-screen bg-[var(--bread-background)]">
       {/* 报纸风格头部 */}
       <header className="bread-navbar">
-        <div className="max-w-5xl mx-auto px-4 py-4">
-          {/* 顶部日期和期号 */}
-          <div className="flex items-center justify-between mb-4 pb-4 border-b border-[var(--bread-border)]">
-            <div className="text-sm text-[var(--bread-text-secondary)] font-body">
-              {new Date().toLocaleDateString('zh-CN', { 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric',
-                weekday: 'long'
-              })}
+        <div className="max-w-5xl mx-auto px-6 py-4">
+          <div className="flex items-center justify-between mb-4 pb-3 border-b border-[var(--bread-border)]">
+            <div className="text-xs text-[var(--bread-text-secondary)] font-body tracking-wider">
+              {new Date().toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' })}
             </div>
-            <div className="text-sm text-[var(--bread-text-secondary)] font-body">
-              每日精选英文新闻
-            </div>
+            <div className="text-xs text-[var(--bread-text-secondary)] font-body tracking-wider">每日精选英文新闻</div>
           </div>
-          
-          {/* 标题栏 */}
           <div className="text-center mb-4">
-            <h1 className="font-display text-4xl md:text-5xl font-bold text-[var(--bread-text)] mb-2 tracking-tight">
-              文章阅读
-            </h1>
-            <div className="">
-              <p className="text-sm text-[var(--bread-text-secondary)] font-display italic">
-                沉浸式英语学习
-              </p>
-            </div>
+            <h1 className="font-display text-4xl md:text-5xl font-bold text-[var(--bread-text)] mb-3 tracking-tight">文章阅读</h1>
+            <p className="text-sm text-[var(--bread-text-secondary)] font-display italic">沉浸式英语学习</p>
           </div>
-          
-          {/* 导航栏 */}
-          <div className="flex items-center justify-between">
-            <nav className="flex items-center gap-6">
-              <a href="/" className="text-[var(--bread-text-secondary)] font-body text-sm tracking-wider hover:text-bread-primary transition">
-                首页
-              </a>
-              <a href="/articles" className="text-[var(--bread-text)] font-display font-semibold text-lg hover:text-bread-primary transition">
-                文章
-              </a>
-              <a href="/vocab" className="text-[var(--bread-text-secondary)] font-body text-sm tracking-wider hover:text-bread-primary transition">
-                单词本
-              </a>
+          <div className="flex items-center justify-between pt-3 border-t border-[var(--bread-border)]">
+            <nav className="flex items-center gap-8">
+              <a href="/" className="text-[var(--bread-text-secondary)] font-body text-sm tracking-wider hover:text-[var(--bread-accent)] transition">首页</a>
+              <a href="/articles" className="text-[var(--bread-text)] font-body text-sm tracking-wider hover:text-[var(--bread-accent)] transition font-semibold">文章</a>
+              <a href="/vocab" className="text-[var(--bread-text-secondary)] font-body text-sm tracking-wider hover:text-[var(--bread-accent)] transition">单词本</a>
             </nav>
-            
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3">
               {isGuest ? (
                 <>
-                  <span className="bread-tag bread-tag-secondary">
-                    游客
-                  </span>
-                  <a href="/login" className="bread-button-primary text-xs text-sm">
-                    登录
-                  </a>
+                  <span className="bread-tag bread-tag-secondary">游客</span>
+                  <a href="/login" className="bread-button-primary text-xs">登录</a>
                 </>
               ) : (
                 <>
-                  <span className="bread-tag bread-tag-primary">
-                    {userTargetExam}
-                  </span>
-                  <span className="bread-tag bread-tag-secondary">
-                    {majorCategory}
-                  </span>
-                  <a href="/settings" className="text-[var(--bread-text-secondary)] hover:text-bread-primary transition" title="设置">
-                    设置
-                  </a>
+                  <span className="bread-tag bread-tag-primary">{userTargetExam}</span>
+                  <span className="bread-tag bread-tag-primary">{majorCategory}</span>
+                  <a href="/settings" className="text-[var(--bread-text)] font-body text-base font-semibold tracking-wider">设置</a>
                 </>
               )}
             </div>
@@ -518,9 +483,8 @@ export default function ArticleReadPage() {
           <div className="p-6 border-b border-[var(--bread-border)]">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-3">
-                <a href="/articles" className="text-sm text-[var(--bread-text-secondary)] hover:text-[var(--bread-text)] transition">← 返回</a>
-                <span className="text-sm text-[var(--bread-text-secondary)]">返回文章列表</span>
-              </div>
+                <a href="/articles" className="text-sm text-[var(--bread-accent)] hover:text-[var(--bread-primary)] transition font-medium">← 返回文章列表</a>
+                              </div>
               <div className="flex items-center gap-2">
                 <span className="text-sm text-[var(--bread-text-secondary)]">切换难度:</span>
                 <div className="flex bg-[var(--bread-highlight)] rounded p-1">
@@ -560,16 +524,11 @@ export default function ArticleReadPage() {
               </h2>
               
               {article.source_name && (
-                <p className="text-[var(--bread-text-secondary)] flex items-center gap-2">
-                  <span>新闻来源: {article.source_name}</span>
-                </p>
+                <p className="text-[var(--bread-text-secondary)]">新闻来源: {article.source_name}</p>
               )}
               
               {article.source_published_at && (
-                <p className="text-[var(--bread-text-secondary)] flex items-center gap-2">
-                  <span></span>
-                  <span>发布时间: {formatDate(article.source_published_at)}</span>
-                </p>
+                <p className="text-[var(--bread-text-secondary)]">发布时间: {formatDate(article.source_published_at)}</p>
               )}
               
               <div className="flex items-center justify-between flex-wrap gap-4">
@@ -580,13 +539,12 @@ export default function ArticleReadPage() {
                     rel="noopener noreferrer"
                     className="text-sm text-bread-primary hover:underline flex items-center gap-1"
                   >
-                    <span></span>
                     <span>原文链接 ↗</span>
                   </a>
                 )}
                 
                 {article.subject_category && (
-                  <span className="bread-tag bread-tag-secondary">
+                  <span className="bread-tag bread-tag-primary">
                      领域: {article.subject_category}
                   </span>
                 )}
