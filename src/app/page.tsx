@@ -179,7 +179,7 @@ export default function HomePage() {
               <div className="flex gap-4 text-xs">
                 <a href="/articles" className="text-[var(--bread-text-secondary)] hover:text-[var(--bread-accent)] transition">文章列表</a>
                 <a href="/vocab" className="text-[var(--bread-text-secondary)] hover:text-[var(--bread-accent)] transition">单词本</a>
-                <a href="/settings" className="text-[var(--bread-text-secondary)] hover:text-[var(--bread-accent)] transition">设置</a>
+                <a href="/settings" className="text-[var(--bread-text-secondary)] font-body text-sm tracking-wider hover:text-[var(--bread-accent)] transition">设置</a>
               </div>
             </div>
             <div>

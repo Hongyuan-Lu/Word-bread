@@ -468,7 +468,7 @@ export default function ArticleReadPage() {
                 <>
                   <span className="bread-tag bread-tag-primary">{userTargetExam}</span>
                   <span className="bread-tag bread-tag-primary">{majorCategory}</span>
-                  <a href="/settings" className="text-[var(--bread-text-secondary)] hover:text-[var(--bread-text)] transition text-xs">设置</a>
+                  <a href="/settings" className="text-[var(--bread-text-secondary)] font-body text-sm tracking-wider hover:text-[var(--bread-accent)] transition">设置</a>
                 </>
               )}
             </div>
