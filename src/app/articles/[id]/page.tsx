@@ -455,7 +455,7 @@ export default function ArticleReadPage() {
           <div className="flex items-center justify-between pt-3 border-t border-[var(--bread-border)]">
             <nav className="flex items-center gap-8">
               <a href="/" className="text-[var(--bread-text-secondary)] font-body text-sm tracking-wider hover:text-[var(--bread-accent)] transition">首页</a>
-              <a href="/articles" className="text-[var(--bread-text)] font-body text-sm tracking-wider hover:text-[var(--bread-accent)] transition font-semibold">文章</a>
+              <a href="/articles" className="text-[var(--bread-text)] font-body text-base font-semibold tracking-wider hover:text-[var(--bread-accent)] transition">文章</a>
               <a href="/vocab" className="text-[var(--bread-text-secondary)] font-body text-sm tracking-wider hover:text-[var(--bread-accent)] transition">单词本</a>
             </nav>
             <div className="flex items-center gap-3">
@@ -605,7 +605,7 @@ export default function ArticleReadPage() {
                 onClick={handleMarkAsRead}
                 className={`w-full py-3 rounded-xl font-medium transition mb-6 ${
                   isRead
-                    ? 'bg-[var(--bread-highlight)] text-[var(--bread-text-secondary)] cursor-pointer hover:bg-[var(--bread-border)]'
+                    ? 'bg-[var(--bread-highlight)] text-[var(--bread-text-secondary)] cursor-pointer'
                     : 'bread-button-primary text-xs'
                 }`}
               >
@@ -619,7 +619,7 @@ export default function ArticleReadPage() {
                 {currentArticleIndex > 0 ? (
                   <a
                     href={`/articles/${articleList[currentArticleIndex - 1].id}`}
-                    className="flex-1 py-3 px-4 bread-button-secondary text-center text-xs"
+                    className="flex-1 py-3 px-4 bg-[var(--bread-highlight)] text-[var(--bread-text)] text-center rounded-xl font-medium text-xs"
                   >
                     返回 上一篇
                   </a>
@@ -636,7 +636,7 @@ export default function ArticleReadPage() {
                 {currentArticleIndex < articleList.length - 1 ? (
                   <a
                     href={`/articles/${articleList[currentArticleIndex + 1].id}`}
-                    className="flex-1 py-3 px-4 bread-button-secondary text-center text-xs"
+                    className="flex-1 py-3 px-4 bg-[var(--bread-highlight)] text-[var(--bread-text)] text-center rounded-xl font-medium text-xs"
                   >
                     下一篇 
                   </a>
