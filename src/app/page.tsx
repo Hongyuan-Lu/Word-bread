@@ -96,7 +96,7 @@ export default function HomePage() {
                   欢迎来到<span className="text-gradient-bread">单词面包</span>
                 </h2>
                 <p className="text-[var(--bread-text-secondary)] mb-8 font-body leading-relaxed">
-                  基于 AI 的新闻阅读工具，专为 CET4/CET6 备考设计。<br />只需花 10 分钟阅读一篇真实新闻，自然积累考试词汇。
+                  基于 AI 的新闻阅读工具，专为 CET 备考设计。<br />碎片化时间阅读真实英文新闻，自然积累考试词汇。
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <a href="/login" className="bread-button-primary">立即登录</a>
