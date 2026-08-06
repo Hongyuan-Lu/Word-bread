@@ -479,7 +479,7 @@ export default function ArticleReadPage() {
       {/* 主要内容 */}
       <main className="max-w-5xl mx-auto px-4 py-8">
         {/* 文章信息卡片 */}
-        <section className="mb-8">
+        <section className="bread-card mb-8">
           <div className="p-6 border-b border-[var(--bread-border)]">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-3">
@@ -553,7 +553,7 @@ export default function ArticleReadPage() {
           </div>
 
           {/* 文章内容 */}
-          <div className="p-6">
+          <div className="p-10">
             {enrichedTokens.length > 0 ? (
               <ArticleReader
                 tokens={enrichedTokens}
