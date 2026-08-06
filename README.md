@@ -58,7 +58,7 @@ WordBread 是一个创新的英语学习工具，它将真实的英文新闻自�
 - Node.js 18+
 - pnpm (推荐) 或 npm
 - Supabase 账号
-- MiniMax API Key
+- LLM API Key
 
 #### 安装步骤
 
@@ -83,7 +83,7 @@ WordBread 是一个创新的英语学习工具，它将真实的英文新闻自�
    NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
    NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
    SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
-   MINIMAX_API_KEY=your_minimax_api_key
+   MINIMAX_API_KEY=your_LLM_api_key
    CRON_SECRET=your_random_secret
    ```
 
@@ -230,7 +230,7 @@ WordBread is an innovative English learning tool that automatically rewrites rea
 - Node.js 18+
 - pnpm (recommended) or npm
 - Supabase account
-- MiniMax API Key
+- LLM API Key
 
 #### Installation
 
@@ -255,7 +255,7 @@ WordBread is an innovative English learning tool that automatically rewrites rea
    NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
    NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
    SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
-   MINIMAX_API_KEY=your_minimax_api_key
+   MINIMAX_API_KEY=your_LLM_api_key
    CRON_SECRET=your_random_secret
    ```
 
