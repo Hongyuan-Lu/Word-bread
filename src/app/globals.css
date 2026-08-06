@@ -1,4 +1,4 @@
-﻿@import "tailwindcss";
+@import "tailwindcss";
 
 :root {
   --bread-primary: #B8956A;
@@ -35,15 +35,10 @@ h1, h2, h3, h4, h5, h6 {
 
 /* 词汇高亮系统 */
 .word-highlight {
-  background: linear-gradient(to bottom, transparent 50%, rgba(184, 149, 106, 0.5) 50%);
+  background: linear-gradient(to bottom, transparent 65%, rgba(184, 149, 106, 0.5) 65%);
   padding: 0 2px;
   font-weight: 500;
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
-
-.word-highlight:hover {
-  background: linear-gradient(to bottom, transparent 50%, rgba(184, 149, 106, 0.7) 50%);
+  color: #1f2937;
 }
 
 /* 报纸风格分隔线 */
@@ -66,6 +61,12 @@ h1, h2, h3, h4, h5, h6 {
 .bread-card:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   border-color: var(--bread-primary);
+}
+
+/* 无悬停效果的卡片 */
+.bread-card.bread-card-no-hover:hover {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  border-color: var(--bread-border);
 }
 
 /* 暖色卡片 */

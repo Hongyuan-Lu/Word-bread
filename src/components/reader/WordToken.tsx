@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import type { ArticleToken } from '@/types/article';
 import type { DisplayLevel } from '@/types/vocab';
@@ -25,7 +25,7 @@ export function WordToken({
     return <span className="text-gray-900">{token.surface}</span>;
   }
 
-  const baseClass = 'cursor-pointer rounded px-0.5 transition-all duration-200';
+  const baseClass = 'rounded px-0.5';
 
   // Level 0: 普通文本（常见词）
   if (displayLevel === 0) {
@@ -33,9 +33,7 @@ export function WordToken({
       <span
         onClick={handleClick}
         className={`${baseClass} ${
-          isSelected
-            ? 'bg-bread-primary/20 ring-2 ring-bread-primary'
-            : 'hover:bg-bread-primary/10'
+          isSelected ? 'bg-bread-primary/20 ring-2 ring-bread-primary' : ''
         }`}
       >
         {token.surface}
@@ -49,9 +47,7 @@ export function WordToken({
       <span
         onClick={handleClick}
         className={`${baseClass} font-bold word-highlight ${
-          isSelected
-            ? 'ring-2 ring-bread-primary'
-            : 'hover:opacity-80'
+          isSelected ? 'ring-2 ring-bread-primary' : ''
         }`}
       >
         {token.surface}
@@ -65,9 +61,7 @@ export function WordToken({
       <span
         onClick={handleClick}
         className={`${baseClass} text-gray-400 ${
-          isSelected
-            ? 'bg-bread-primary/20 ring-2 ring-bread-primary'
-            : 'hover:bg-gray-100'
+          isSelected ? 'bg-bread-primary/20 ring-2 ring-bread-primary' : ''
         }`}
       >
         {token.surface}
@@ -80,9 +74,7 @@ export function WordToken({
     <span
       onClick={handleClick}
       className={`${baseClass} ${
-        isSelected
-          ? 'bg-bread-primary/20 ring-2 ring-bread-primary'
-          : 'hover:bg-bread-primary/10'
+        isSelected ? 'bg-bread-primary/20 ring-2 ring-bread-primary' : ''
       }`}
     >
       {token.surface}
