@@ -77,15 +77,15 @@ export function WordPopover({
     >
       <button
         onClick={onClose}
-        className="absolute top-3 right-3 w-8 h-8 flex items-center justify-center text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-full transition"
+        className="absolute top-3 right-3 w-8 h-8 flex items-center justify-center text-[var(--bread-text-secondary)] hover:text-[var(--bread-text-secondary)] hover:bg-[var(--bread-highlight)] rounded-full transition"
       >
         ✕
       </button>
 
       <div className="mb-4">
-        <div className="font-display text-2xl font-bold text-gray-900 mb-1">{token.surface}</div>
+        <div className="font-display text-2xl font-bold text-[var(--bread-text)] mb-1">{token.surface}</div>
         {token.lemma && (
-          <div className="text-sm text-gray-500 font-mono">
+          <div className="text-sm text-[var(--bread-text-secondary)] font-mono">
             lemma: {token.lemma}
           </div>
         )}
@@ -112,7 +112,7 @@ export function WordPopover({
           <span className="text-sm text-gray-600">掌握:</span>
           <span className={`bread-tag text-xs ${
             masteryStatus === 'known' ? 'bg-[var(--bread-highlight)] text-[var(--bread-text-secondary)]' :
-            masteryStatus === 'unknown' ? 'bg-yellow-100 text-yellow-700' :
+            masteryStatus === 'unknown' ? 'bg-[var(--bread-warm)] text-[var(--bread-accent)]' :
             'bread-tag-secondary'
           }`}>
             {masteryLabels[masteryStatus ?? 'null']}
@@ -121,9 +121,9 @@ export function WordPopover({
       </div>
 
       {token.short_explanation && (
-        <div className="mb-4 p-3 bg-blue-50 rounded-xl border border-blue-100">
-          <div className="text-xs text-blue-600 font-medium mb-1">📖 释义</div>
-          <div className="text-sm text-gray-800">{token.short_explanation}</div>
+        <div className="mb-4 p-3 bg-[var(--bread-warm)] rounded-xl border border-[var(--bread-border)]">
+          <div className="text-xs text-[var(--bread-accent)] font-medium mb-1">📖 释义</div>
+          <div className="text-sm text-[var(--bread-text)]">{token.short_explanation}</div>
         </div>
       )}
 

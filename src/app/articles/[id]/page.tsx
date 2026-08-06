@@ -479,7 +479,7 @@ export default function ArticleReadPage() {
       {/* 主要内容 */}
       <main className="max-w-5xl mx-auto px-4 py-8">
         {/* 文章信息卡片 */}
-        <section className="bread-card mb-8">
+        <section className="mb-8">
           <div className="p-6 border-b border-[var(--bread-border)]">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-3">
@@ -580,7 +580,7 @@ export default function ArticleReadPage() {
             <div className="p-6 border-t border-[var(--bread-border)] bg-[var(--bread-highlight)]">
               <button
                 onClick={() => setShowTranslation(!showTranslation)}
-                className="flex items-center gap-2 text-[var(--bread-accent)] font-medium mb-4"
+                className="flex items-center gap-2 text-[var(--bread-text)] font-medium mb-4"
               >
                 <span>{showTranslation ? '▼' : '▶'}</span>
                 <span> 查看中文译文</span>
