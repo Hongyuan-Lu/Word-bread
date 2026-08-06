@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState, useCallback, useRef, useEffect } from 'react';
 import type { ArticleToken } from '@/types/article';
@@ -18,7 +18,7 @@ interface ArticleReaderProps {
   targetExam: TargetExam;
   initialUserWordStates?: Map<string, VocabType>;
   onAddToStudyPlan?: (lemma: string, wordId?: string | null, glossSnapshot?: string | null) => Promise<boolean>;
-  onMark较难单词?: (lemma: string, wordId?: string | null, glossSnapshot?: string | null) => Promise<boolean>;
+  onMarkDifficult?: (lemma: string, wordId?: string | null, glossSnapshot?: string | null) => Promise<boolean>;
   onMarkKnown?: (lemma: string) => Promise<boolean>;
   isGuest?: boolean;
 }
@@ -28,7 +28,7 @@ export function ArticleReader({
   targetExam,
   initialUserWordStates = new Map(),
   onAddToStudyPlan,
-  onMark较难单词,
+  onMarkDifficult,
   onMarkKnown,
   isGuest = false,
 }: ArticleReaderProps) {
@@ -106,23 +106,23 @@ export function ArticleReader({
     [userWordStates, onAddToStudyPlan, handleClosePopover, selectedToken]
   );
 
-  const handleMark较难单词 = useCallback(
+  const handleMarkDifficult = useCallback(
     async (lemma: string) => {
       const previousState = userWordStates.get(lemma);
 
       setUserWordStates((prev) => {
         const next = new Map(prev);
-        next.set(lemma, '较难单词');
+        next.set(lemma, 'difficult');
         return next;
       });
       handleClosePopover();
 
-      if (onMark较难单词) {
+      if (onMarkDifficult) {
         const enriched = selectedToken as EnrichedToken;
         const wordId = selectedToken?.word_id ?? null;
         const gloss = (wordId && enriched?.cn_gloss) ? enriched.cn_gloss : (selectedToken?.short_explanation ?? null);
         const glossSnapshot = wordId ? null : gloss;
-        const success = await onMark较难单词(lemma, wordId, glossSnapshot);
+        const success = await onMarkDifficult(lemma, wordId, glossSnapshot);
         if (!success) {
           setUserWordStates((prev) => {
             const next = new Map(prev);
@@ -143,7 +143,7 @@ export function ArticleReader({
         }
       }
     },
-    [userWordStates, onMark较难单词, handleClosePopover, selectedToken]
+    [userWordStates, onMarkDifficult, handleClosePopover, selectedToken]
   );
 
   const getVocabType = useCallback(
@@ -187,7 +187,7 @@ export function ArticleReader({
 
   const vocabTypeLabels: Record<VocabType, string> = {
     study_plan: '学习计划',
-    较难单词: '较难单词',
+    较难单词: 'difficult',
   };
 
   const vocabTypeColors: Record<VocabType, string> = {
@@ -323,7 +323,7 @@ export function ArticleReader({
                       学习计划
                     </button>
                     <button
-                      onClick={() => selectedToken.lemma && handleMark较难单词(selectedToken.lemma)}
+                      onClick={() => selectedToken.lemma && handleMarkDifficult(selectedToken.lemma)}
                       className="flex-1 px-3 py-2 bg-[var(--bread-primary)] text-white hover:bg-[var(--bread-accent)] text-sm font-medium rounded-sm transition"
                     >
                       较难单词
