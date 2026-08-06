@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState, useEffect, useMemo } from 'react';
 import { usePathname } from 'next/navigation';
@@ -264,7 +264,7 @@ export default function VocabPage() {
       <main className="max-w-5xl mx-auto px-6 py-10">
         {/* 统计卡片 */}
         <section className="bread-card-highlight p-8 mb-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-3 gap-4 md:gap-8">
             <div className="text-center">
               <div className="text-3xl font-bold text-[var(--bread-text)] mb-1" style={{ fontFamily: 'Arial, sans-serif' }}>{wordStates.length}</div>
               <div className="text-xs text-[var(--bread-text-secondary)] tracking-wider">总单词数</div>
@@ -359,7 +359,7 @@ export default function VocabPage() {
                         </div>
                       </div>
                       
-                      <div className="flex gap-2 ml-4">
+                      <div className="flex flex-col gap-2 ml-4">
                         {word.vocab_type === 'study_plan' ? (
                           <button onClick={() => handleUpdateVocabType(word.lemma, 'difficult')} className="px-3 py-2 bg-[var(--bread-highlight)] hover:bg-[var(--bread-border)] text-[var(--bread-text)] text-xs font-medium rounded border border-[var(--bread-border)] transition">
                             改为较难
@@ -370,7 +370,7 @@ export default function VocabPage() {
                           </button>
                         )}
                         <button onClick={() => handleDelete(word.lemma)} className="px-3 py-2 bg-[var(--bread-highlight)] hover:bg-[var(--bread-border)] text-[var(--bread-text)] text-xs font-medium rounded border border-[var(--bread-border)] transition">
-                          已熟悉
+                          已经熟悉
                         </button>
                       </div>
                     </div>
