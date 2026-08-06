@@ -495,7 +495,7 @@ export default function ArticleReadPage() {
                     }}
                     className={`px-4 py-1.5 rounded-md text-xs font-medium transition ${
                       displayMode === 'CET4'
-                        ? 'bg-[var(--bread-text)] text-white'
+                        ? 'bg-[var(--bread-primary)] text-white'
                         : 'text-[var(--bread-text-secondary)] hover:text-[var(--bread-text)]'
                     }`}
                   >
@@ -508,7 +508,7 @@ export default function ArticleReadPage() {
                     }}
                     className={`px-4 py-1.5 rounded-md text-xs font-medium transition ${
                       displayMode === 'CET6'
-                        ? 'bg-[var(--bread-text)] text-white'
+                        ? 'bg-[var(--bread-primary)] text-white'
                         : 'text-[var(--bread-text-secondary)] hover:text-[var(--bread-text)]'
                     }`}
                   >
