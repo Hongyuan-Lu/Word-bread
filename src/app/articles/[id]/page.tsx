@@ -605,7 +605,7 @@ export default function ArticleReadPage() {
                 onClick={handleMarkAsRead}
                 className={`w-full py-3 rounded-xl font-medium transition mb-6 ${
                   isRead
-                    ? 'bg-[var(--bread-highlight)] text-[var(--bread-text-secondary)] cursor-pointer'
+                    ? 'bg-[var(--bread-highlight)] text-[var(--bread-text-secondary)] cursor-pointer hover:bg-[var(--bread-border)]'
                     : 'bread-button-primary text-xs'
                 }`}
               >
